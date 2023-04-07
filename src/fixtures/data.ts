@@ -9,7 +9,6 @@ export let currentUser = "currentUser";
 const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
 const clientID = import.meta.env.VITE_CLIENT_ID;
 const redirectURI = import.meta.env.VITE_REDIRECT_URI;
-console.log(import.meta.env);
 
 interface Token {
     key: string,
