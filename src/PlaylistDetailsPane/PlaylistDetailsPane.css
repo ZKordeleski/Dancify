@@ -1,0 +1,11 @@
+.PlaylistDetailsPane {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    /* Details pane wasn't allowing itself to shrink (even with flex shrink). This allows it to shrink appropriately. */
+    min-width: 0px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+}

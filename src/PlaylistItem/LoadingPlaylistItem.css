@@ -1,0 +1,154 @@
+:root {
+    --accent-grey: #34303b;
+    --beats-per-minute: 122;
+    --loading-animation-duration: calc(4 * 60 / var(--beats-per-minute) * 1s);
+    --accent-peach: #FCA18E;
+    --accent-green: #8EFCA1;
+    --accent-lavender: #A18EFC;
+    --quarter-note-duration: calc(var(--loading-animation-duration) / 4);
+    --on-beat: calc(var(--loading-animation-duration) / 4);
+    --off-beat: calc(2 * var(--loading-animation-duration) / 4)
+}
+
+.PlaylistItem.loading {
+    gap: 5px;
+    pointer-events: none;
+}
+
+.PlaylistItem.loading .PlaylistImage {
+    background-color: var(--accent-grey);
+}
+
+.PlaylistItem.loading .PlaylistName {
+    background-color: var(--accent-grey);
+    margin: 0px;
+    border-radius: 3px;
+    flex: 1 0 0;
+    height: 1em;
+}
+
+
+
+/* SPAN ANIMATIONS */
+
+.PlaylistItem.loading:nth-child(4n) .PlaylistName:first-of-type {
+    animation: dancepad var(--loading-animation-duration) var(--off-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n) .PlaylistName:last-of-type {
+    animation: dancepad var(--loading-animation-duration) var(--on-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+1) .PlaylistName:first-of-type {
+    animation: dancepad var(--loading-animation-duration) var(--off-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+1) .PlaylistName:last-of-type {
+    animation: dancepad var(--loading-animation-duration) var(--on-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+2) .PlaylistName:first-of-type {
+    animation: dancepad var(--loading-animation-duration) var(--off-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+2) .PlaylistName:last-of-type {
+    animation: dancepad var(--loading-animation-duration) var(--on-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+3) .PlaylistName:first-of-type {
+    animation: dancepad var(--loading-animation-duration) var(--off-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+3) .PlaylistName:last-of-type {
+    animation: dancepad var(--loading-animation-duration) var(--on-beat) steps(1, end) infinite;
+}
+
+/* IMAGES ANIMATIONS */
+
+.PlaylistItem.loading:nth-child(4n) .PlaylistImage {
+    animation: dancepad var(--loading-animation-duration) var(--on-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+1) .PlaylistImage {
+    animation: dancepad var(--loading-animation-duration) var(--off-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+2) .PlaylistImage {
+    animation: dancepad var(--loading-animation-duration) var(--on-beat) steps(1, end) infinite;
+}
+
+.PlaylistItem.loading:nth-child(4n+3) .PlaylistImage {
+    animation: dancepad var(--loading-animation-duration) var(--off-beat) steps(1, end) infinite;
+}
+
+@keyframes dancepad {
+    0% {
+        background-color: var(--accent-grey);
+    }
+
+    25% {
+        background-color: var(--accent-grey);
+    }
+
+    25% {
+        background-color: var(--accent-green);
+    }
+
+    50% {
+        background-color: var(--accent-green);
+    }
+
+    50% {
+        background-color: var(--accent-lavender);
+    }
+
+    75% {
+        background-color: var(--accent-lavender);
+    }
+
+    75% {
+        background-color: var(--accent-peach);
+    }
+
+    100% {
+        background-color: var(--accent-grey);
+    }
+}
+
+@keyframes carl {
+    0% {
+        background-color: var(--accent-grey);
+    }
+
+    12.5% {
+        background-color: var(--accent-lavender);
+    }
+
+    25% {
+        background-color: var(--accent-green);
+    }
+
+    37.5% {
+        background-color: var(--accent-lavender);
+    }
+
+    50% {
+        background-color: var(--accent-grey);
+    }
+
+    62.5% {
+        background-color: var(--accent-lavender);
+    }
+
+    75% {
+        background-color: var(--accent-green);
+    }
+
+    82.5% {
+        background-color: var(--accent-lavender);
+    }
+
+    100% {
+        background-color: var(--accent-grey);
+    }
+}

@@ -1,0 +1,42 @@
+/* TODO: Redo bar chart to have 3px spacing between bars */
+/* TODO: Consider moving the "Danceability / Valence ..." etc into the chart instead of below. */
+/* TODO: Move the filters to this location as well. */
+
+.MetricAssessment {
+    display: flex;
+    flex-direction: column;
+}
+
+.MetricAssessment .charts {
+    display: flex;
+    gap: calc(2 * var(--tile-margin));
+    padding: 0 var(--tile-margin);
+    margin-bottom: var(--tile-margin);
+}
+
+.MetricAssessment .histogram-filter {
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+
+    /* Necessary for ChartJS chart to resize appropriately in flex elements. */
+    overflow: hidden;
+}
+
+.MetricAssessment .chart-wrapper {
+    display: flex;
+
+    margin: 0px calc(.5 * var(--thumb-size) + 2 * var(--slider-border));
+
+    /* Necessary for ChartJS chart to resize appropriately in flex elements. */
+    overflow: hidden;
+}
+
+.MetricAssessment .metrics {
+    display: flex;
+    flex-direction: column;
+}
+
+.MetricAssessment .playlist-stats {
+    display: flex;
+}

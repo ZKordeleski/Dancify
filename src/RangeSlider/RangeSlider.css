@@ -1,0 +1,94 @@
+/* TODO: Visual part of edge of thumbs should line up with edge of tiles */
+/* TODO: Adjust the width of the sliders to account for the added borders (on thumbs / rail) */
+:root {
+    --thumb-size: calc(12px + 2 * var(--slider-border));
+    --slider-border: 3px;
+    --tile-margin: 5px;
+}
+
+.RangeSlider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0px calc(var(--thumb-size));
+    margin-top: calc(-1 * (var(--thumb-size))/2);
+    height: var(--thumb-size);
+    
+}
+
+.RangeSlider .sliders-wrapper {
+    width: calc(100% + var(--thumb-size));
+    margin: 0 calc(var(--thumb-size) / -2);
+    position: absolute;
+    height: var(--thumb-size);  
+}
+
+.RangeSlider .control-wrapper {
+    width: 100%;
+    position: absolute;
+    height: var(--thumb-size);
+}
+
+.RangeSlider input {
+    position: absolute;
+    width: 100%;
+    pointer-events: none;
+    /* NOTE: Appearance doesn't seem necessary? Maybe for different browsers. */
+    /* appearance: none; */
+    height: 100%;
+    opacity: 0;
+    z-index: 3;
+    padding: 0;
+}
+
+.RangeSlider input:focus::-webkit-slider-runnable-track {
+    appearance: none;
+    background: transparent;
+    border: transparent;
+}
+
+.RangeSlider input::-webkit-slider-thumb {
+    appearance: none;
+    pointer-events: all;
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    border-radius: 0px;
+    border: 0 none;
+    cursor: grab;
+    background-color: red;
+}
+
+.RangeSlider input::-webkit-slider-thumb:active {
+    cursor: grabbing;
+}
+
+.RangeSlider .rail {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 6px;
+    border-radius: 3px;
+    border: var(--slider-border) solid #16131d;
+    background: lightgrey;
+}
+
+.RangeSlider .inner-rail {
+    position: absolute;
+    height: 100%;
+    background: hotpink;
+    opacity: 0.5;
+}
+
+.RangeSlider .control {
+    width: calc(var(--thumb-size) - 2 * var(--slider-border));
+    height: calc(var(--thumb-size) - 2 * var(--slider-border));
+    border-radius: 50%;
+    border: var(--slider-border) solid #16131d;
+    position: absolute;
+    background: hotpink;
+    top: 50%;
+    margin-left: calc(var(--thumb-size) / -2);
+    transform: translate3d(0, -50%, 0);
+    z-index: 2;
+}

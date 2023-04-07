@@ -1,0 +1,83 @@
+.PlaylistBuilder {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    padding: 5px 5px 0px 5px;
+    
+    overflow: hidden;
+}
+
+.PlaylistBuilder .new-playlist-info, .PlaylistBuilder .source-playlist-info, .PlaylistBuilder .submission-form-tracks-preview {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* TODO: Buttons get pushed off-screen if height set to 100%. */
+.PlaylistBuilder .playlists-window {
+    display: flex;
+    justify-content: space-between;
+    height: 90%;
+    width: 100%;
+    
+}
+
+.PlaylistBuilder .playlist-tiles-wrapper {
+    display: flex;
+}
+
+.PlaylistBuilder .source-playlist-info .source-playlist {
+    flex-direction: column;
+}
+
+.PlaylistBuilder .new-playlist-info .new-playlist {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.PlaylistBuilder .filters-wrapper {
+    display: flex;
+    width: 618px;
+    position: absolute;
+}
+
+.PlaylistBuilder .track-tiles {
+    border: 5px solid black;
+}
+
+.PlaylistBuilder .buttons-wrapper {
+    display: flex;
+    justify-content: center;
+
+    gap: 15px;
+    position: sticky;
+    bottom: 5px;
+}
+
+.PlaylistBuilder .buttons-wrapper button {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: 110%;
+    
+
+    background-color: rgba(142, 252, 161, 1);
+    box-shadow: 0 0 20px rgba(30, 215, 96, 0.2);
+
+    width: 120px;
+    height: 40px;
+
+    border: solid #6D6D6D 1px;
+    border-radius: 5px;
+}
+
+.PlaylistBuilder .buttons-wrapper .reset-button {
+    background-color: rgb(252, 161, 142);
+    box-shadow: 0 0 20px rgb(216, 97, 97, 0.2);
+}
+
+.PlaylistBuilder .buttons-wrapper button:hover {
+    transform: scale(1.02);
+
+    transition: all 100ms ease-in-out;
+}

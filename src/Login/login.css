@@ -1,0 +1,107 @@
+.Login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 80vh;
+
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: .8em;
+}
+
+.Login .title {
+    display: flex;
+    justify-content: center;
+    font-size: 7em;
+    margin: 5px;
+    color: #22DA63;
+    opacity: 0;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #454545;
+
+    animation: title-animation 2s 4s infinite, fade-in 2s 4s forwards;
+}
+
+/* TODO: Sync these animations using animation.ready, iterationStart, etc. */
+
+/* @keyframes title-animation {
+    0% {color: #22DA63;}
+    33% {color: #009FFF;}
+    66% {color: #FC7E00;}
+    100% {color: #22DA63;}
+} */
+
+
+.Login span {
+    font-size: 1.25em;
+}
+
+.Login .login-pane {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    align-items: center;
+
+    width: 20vw;
+
+    /* background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(36, 36, 36, 0.211); */
+
+    padding: 20px;
+    padding-bottom: 5px;
+}
+
+.Login .logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 8vw;
+    margin: 50px;
+}
+
+.Login .login-pane .logo-wrapper img {
+    overflow: visible;
+}
+
+.Login button {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: 1.25em;
+
+    background-color: rgba(30, 215, 96, 1);
+    box-shadow: 0 0 20px rgba(30, 215, 96, 0.2);
+    opacity: 0;
+
+    width: 200px;
+    height: 50px;
+
+    margin: 10px;
+    margin-bottom: 30px;
+
+    border: solid #6D6D6D 1px;
+    border-radius: 5px;
+
+    animation: button-animation 2s 4s infinite, fade-in 2s 6s forwards;
+}
+
+/* @keyframes button-animation {
+    0% {background-color: #22DA63;}
+    33% {background-color: #009FFF;}
+    66% {background-color: #FC7E00;}
+    100% {background-color: #22DA63;}
+} */
+
+@keyframes fade-in {
+    100% {opacity: 1}
+}
+
+.Login button:hover {
+    background-color: rgb(23, 200, 85);
+    box-shadow: 0 0 20px rgba(13, 232, 89, 0.2);
+    transform: scale(1.02);
+
+    transition: all 100ms ease-in-out;
+}

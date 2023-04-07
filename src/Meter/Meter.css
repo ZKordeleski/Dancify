@@ -1,0 +1,18 @@
+.Meter {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin: var(--tile-margin);
+    padding: 10px 0px;
+
+    border-radius: 3px;
+
+    align-items: center;
+
+    background-color: #2d273b;
+}
+
+.Meter .Value {
+    font-size: 1.5em;
+}
