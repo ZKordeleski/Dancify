@@ -47,6 +47,10 @@ body {
     animation: fade-in 2s forwards;
 }
 
+.Login .title:hover {
+    text-shadow: 0 0 20px #8efca0a7;
+}
+
 /* TODO: Sync these animations using animation.ready, iterationStart, etc. */
 
 /* @keyframes title-animation {
