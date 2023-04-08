@@ -14,7 +14,7 @@
     left: 10%;
     width: 80%;
     height: 80%;
-    background-color: #16131d;
+    background-color: var(--app-background-color);
     z-index: 10;
 }
 

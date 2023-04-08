@@ -69,7 +69,7 @@
     transform: translateY(-50%);
     height: 6px;
     border-radius: 3px;
-    border: var(--slider-border) solid #16131d;
+    border: var(--slider-border) solid var(--app-background-color);
     background: lightgrey;
 }
 
@@ -84,7 +84,7 @@
     width: calc(var(--thumb-size) - 2 * var(--slider-border));
     height: calc(var(--thumb-size) - 2 * var(--slider-border));
     border-radius: 50%;
-    border: var(--slider-border) solid #16131d;
+    border: var(--slider-border) solid var(--app-background-color);
     position: absolute;
     background: hotpink;
     top: 50%;

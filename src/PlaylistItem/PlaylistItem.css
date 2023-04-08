@@ -42,7 +42,7 @@
 }
 
 .PlaylistItem.Selected {
-    background-image: linear-gradient(to right, #373146ce, #16131d 70%);
+    background-image: linear-gradient(to right, #373146ce, var(--app-background-color) 70%);
 }
 
 .PlaylistPane.Selected .PlaylistItem:not(.Selected) {
@@ -52,14 +52,14 @@
 .PlaylistItem:hover {
     z-index: 1;
     box-shadow: 0px 14px 31px rgba(10, 0, 20, 0.2);
-    background: linear-gradient(to right, #373146ce, #16131d 70%);
+    background: linear-gradient(to right, #373146ce, var(--app-background-color) 70%);
     /* filter: opacity(90%); */
     transform: translateX(10px);
 }
 
 .PlaylistItem {
     position: relative;
-    background: linear-gradient(to right, #16131d, #16131d 70%);
+    background: linear-gradient(to right, var(--app-background-color), var(--app-background-color) 70%);
     z-index: 1;
 }
 
@@ -71,7 +71,7 @@
     border-radius: 10px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, #373146ce, #16131d 70%);
+    background: linear-gradient(to right, #373146ce, var(--app-background-color) 70%);
     opacity: 0;
     transition: opacity .4s ease-in-out;
     z-index: -1;
@@ -93,15 +93,15 @@
 }
 
 .loading.green {
-    background: linear-gradient(to right, #8EFCA1, #16131d 80%);
+    background: linear-gradient(to right, #8EFCA1, var(--app-background-color) 80%);
 }
 
 .loading.lavender {
-    background: linear-gradient(to right, #A18EFC, #16131d 80%);
+    background: linear-gradient(to right, #A18EFC, var(--app-background-color) 80%);
 }
 
 .loading.peach {
-    background: linear-gradient(to right, #FCA18E, #16131d 80%);
+    background: linear-gradient(to right, #FCA18E, var(--app-background-color) 80%);
 }
 
 @keyframes gradient {

@@ -1,3 +1,7 @@
+:root {
+  --app-background-color: #16131d;
+}
+
 body {
   /* transition: background-image .3s ease-in-out; */
 
@@ -13,7 +17,7 @@ body {
 }
 
 body::-webkit-scrollbar-track {
-  background-color: #16131d;
+  background-color: var(--app-background-color);
 }
 
 #root {

@@ -1,11 +1,33 @@
+#root {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--app-background-color);
+    
+}
+
+body {
+    /* transition: background-image .3s ease-in-out; */
+  
+    margin: 0px;
+    height: 100vh;
+    width: 100vw;
+    /* background-image: linear-gradient(to top, #ff62623f, #ff805644, #ff9f5041, #ffbc513e, #ffd95d4b, #cde36145, #95e9773e, #42eb9c51, #00d3c848, #00b4f03b, #0094fd39, #0061e148), 
+    linear-gradient(45deg, #c300ff3f, #4532b444, #ff9f5041, #ffbc513e, #5dffdf4b, #e3936145, #95e9773e, #42eb9c51, #00d3c848, #00b4f03b, #0094fd39, #0061e148);
+    background-size: 400% 400%, 400% 400%;
+    background-repeat: no-repeat;
+  
+    animation: gradient 30s ease-in-out infinite; */
+  }
+
 .Login {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    height: 80vh;
+    background-color: var(--app-background-color);
 
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
     font-size: .8em;
 }
 
@@ -16,10 +38,10 @@
     margin: 5px;
     color: #22DA63;
     opacity: 0;
-    -webkit-text-stroke: 1px;
-    -webkit-text-stroke-color: #454545;
+    /* -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: var(--app-background-color); */
 
-    animation: title-animation 2s 4s infinite, fade-in 2s 4s forwards;
+    animation: title-animation 2s 4s infinite, fade-in 1s 1s forwards;
 }
 
 /* TODO: Sync these animations using animation.ready, iterationStart, etc. */
@@ -54,12 +76,8 @@
 }
 
 .Login .logo-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: center;
-    width: 8vw;
-    margin: 50px;
+    width: 70%;
+    margin-bottom: 30px;
 }
 
 .Login .login-pane .logo-wrapper img {
@@ -84,7 +102,7 @@
     border: solid #6D6D6D 1px;
     border-radius: 5px;
 
-    animation: button-animation 2s 4s infinite, fade-in 2s 6s forwards;
+    animation: button-animation 2s 4s infinite, fade-in 1s 1s forwards;
 }
 
 /* @keyframes button-animation {
