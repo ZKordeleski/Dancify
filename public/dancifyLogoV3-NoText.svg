@@ -1,54 +1,62 @@
-<svg id="Fewer_Facets" data-name="Fewer Facets" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1950.67 2572.83">
+<svg 
+    id="Fewer_Facets" 
+    data-name="Fewer Facets" 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 1950.67 2572.83">
 <defs>
     <style>
         .facet, .hangar{
-            fill: #bfbfbf;
-            transform: translateY(-100%);
+            fill: #16131d;
+            <!-- transform: translateY(-100%); -->
 
-            animation: slide-in 4s forwards;  
+            <!-- animation: slide-in 2s forwards;   -->
+        }
+
+        .hangar {
+            fill: #606060;
         }
 
         .glowing-facet-1 {
-            fill: #bfbfbf;
-            transform: translateY(-100%);
-            animation: filter-animation-1 2.5s 8s infinite, slide-in 4s forwards;  
+            fill: #16131d;
+            <!-- transform: translateY(-100%); -->
+            animation: filter-animation-1 2s 2s infinite; 
         }
 
         @keyframes filter-animation-1 {
-            0% {fill: #bfbfbf;}
-            33% { fill: #bfbfbf;}
-            66% { fill: #bfbfbf;}
-            100% { fill: #22DA63;}
+            0% {fill: #16131d;}
+            33% { fill: #16131d;}
+            66% { fill: #16131d;}
+            100% {fill: #8EFCA1;}
         }
 
         .glowing-facet-2 {
-            fill: #bfbfbf;
-            transform: translateY(-100%);
-            animation: filter-animation-2 2.5s 8s infinite, slide-in 4s forwards;
+            fill: #16131d;
+            <!-- transform: translateY(-100%); -->
+            animation: filter-animation-2 2s 2s infinite;
         }
 
         @keyframes filter-animation-2 {
-            0% {fill: #bfbfbf;}
-            33% { fill: #009FFF}
-            66% { fill: #bfbfbf;}
-            100% { fill: #bfbfbf;}
+            0% {fill: #16131d;}
+            33% { fill: #A18EFC}
+            66% { fill: #16131d;}
+            100% { fill: #16131d;}
         }
 
         .glowing-facet-3 {
-            fill: #bfbfbf;
-            transform: translateY(-100%);
-            animation: filter-animation-3 2.5s 8s infinite, slide-in 4s forwards;
+            fill: #16131d;
+            <!-- transform: translateY(-100%); -->
+            animation: filter-animation-3 2s 2s infinite;
         }
 
         @keyframes filter-animation-3 {
-            0% {fill: #bfbfbf;}
-            33% {fill: #bfbfbf;}
-            66% {fill: #FC7E00;}
-            100% {fill: #bfbfbf;}
+            0% {fill: #16131d;}
+            33% {fill: #16131d;}
+            66% {fill: #FCA18E}
+            100% {fill: #16131d;}
         }
 
         .facet, .glowing-facet-1, .glowing-facet-2, .glowing-facet-3, hangar{
-            stroke:#fff;
+            stroke:#424242;
             stroke-miterlimit:10;
             stroke-width:12px;
             

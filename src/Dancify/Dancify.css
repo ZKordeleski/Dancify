@@ -37,7 +37,7 @@ body::-webkit-scrollbar-track {
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: white;
-  background-color: #16131d;
+  background-color: var(--app-background-color);
 }
 
 .Dancify .Panes {
