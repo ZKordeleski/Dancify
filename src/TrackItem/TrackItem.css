@@ -25,16 +25,25 @@
     transform: translateX(-10px);
 }
 
-.TrackItem.removeTrackItem .ImageTextWrapper{
+.TrackItem.removeTrackItem .track-info-wrapper{
     flex-direction: row-reverse;
 }
 
-.TrackItem .ImageTextWrapper {
+.TrackItem.removeTrackItem .track-info-wrapper .TextContainer{
+    text-align: right;
+}
+
+.TrackItem.removeTrackItem .track-info-wrapper .TextContainer span {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.TrackItem .track-info-wrapper {
     display: flex;
     align-items: center;
 }
 
-.TrackItem .ImageTextWrapper .TrackImage {
+.TrackItem .track-info-wrapper .track-image {
     display: flex;
     flex: 0 0 50px;
     align-items: center;
@@ -50,7 +59,7 @@
     padding: 5px;
 }
 
-.TrackItem .ImageTextWrapper .TrackName span {
+.TrackItem .track-info-wrapper .TrackName span {
     display: flex;
     flex: 1 0 20%;
 
@@ -62,7 +71,7 @@
     text-align: left;
 }
 
-.TrackItem .ImageTextWrapper .TrackArtists span {
+.TrackItem .track-info-wrapper .TrackArtists span {
     display: flex;
     flex: 1 0 20%;
 

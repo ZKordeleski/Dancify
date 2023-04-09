@@ -24,8 +24,8 @@ function TrackItem(props: TrackInfoProps) {
   }
   return (
     <div className={"TrackItem " + props.buttonType + "TrackItem"}>
-      <div className="ImageTextWrapper">
-        <div className="TrackImage" style={{backgroundImage: `url("${props.trackInfo.images[0].url}")`}} />
+      <div className="track-info-wrapper">
+        <div className="track-image" style={{backgroundImage: `url("${props.trackInfo.images[0].url}")`}} />
         <div className="TextContainer">
           <div className="TrackName">
             <span>{props.trackInfo.name}</span>

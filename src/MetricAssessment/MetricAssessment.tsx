@@ -124,9 +124,9 @@ function MetricAssessment(props: MetricAssessmentProps) {
       </div>
       <div className="metrics">
         <div className="averages playlist-stats">
-          <Meter name={"Energy"} value={playlistMetrics.energy.average} normalized={true} />
-          <Meter name={"Valence"} value={playlistMetrics.valence.average} normalized={true} />
-          <Meter name={"Danceability"} value={playlistMetrics.danceability.average} normalized={true} />
+          <Meter name={"Energy"} value={(100*playlistMetrics.energy.average).toPrecision(2) + "%"} />
+          <Meter name={"Valence"} value={(100*playlistMetrics.energy.average).toPrecision(2) + "%"} />
+          <Meter name={"Danceability"} value={(100*playlistMetrics.energy.average).toPrecision(2) + "%"} />
         </div>
         <div className="playlist-stats">
           <Meter name={"Minutes"} value={(Math.round((playlistMetrics.duration.total/1000)/60))} />

@@ -83,7 +83,7 @@
     transition: all 100ms ease-in-out;
 }
 
-.PlaylistBuilder button:hover {
+.PlaylistBuilder .add-playlist-button:hover {
     box-shadow: 0 0 20px #8efca0a7;
     transform: scale(1.02);
 

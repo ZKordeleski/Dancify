@@ -42,8 +42,10 @@
 
 .CreatePlaylist input {
     display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
     margin: var(--tile-margin);
+    padding: 3px;
     border: none;
     border-radius: 3px;
 }
