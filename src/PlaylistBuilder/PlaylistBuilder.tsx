@@ -99,11 +99,11 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
       <div className="buttons-wrapper">
         <button className="add-playlist-button" onClick={() => {
               setShowPlaylistForm(!showPlaylistForm);
-            }}>Save
+            }}>save
         </button>
         <button className="reset-button" onClick={() => {
               props.resetSelections();
-            }}> Reset
+            }}> reset
         </button>
       </div>
     </div>

@@ -53,45 +53,45 @@ function CreatePlaylist(props: CreatePlaylistProps) {
                 <MetricAssessment trackIDs={props.trackIDs} audioFeatures={newPlaylistAudioFeatures} filterSettings={filterSettings} setFilterSettings={setFilterSettings}/>
             </div>
             <div className="submission-form-wrapper">
-            <div className="add-playlist-form">
-                <h2>Before we add your playlist...</h2>
-                <form>
-                    <div>
-                        <label>Playlist Name:</label>
-                        <input 
-                            type="text"
-                            required
-                            value={playlistName}
-                            onChange={(event) => setPlaylistName(event.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Playlist Description:</label>
-                        <textarea
-                            required
-                            value={playlistDescription}
-                            onChange={(event) => setPlaylistDescription(event.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Private:</label>
-                        <input
-                            type="checkbox"
-                            checked={isPlaylistPrivate}
-                            onChange={() => setIsPlaylistPrivate(!isPlaylistPrivate)}
-                        />
-                    </div>
-                </form>
-                <div className="buttons-wrapper">
+                <div className="add-playlist-form">
+                    <form>
+                        <div className="playlist-name-wrapper">
+                            <label>Playlist Name:</label>
+                            <input 
+                                type="text"
+                                required
+                                value={playlistName}
+                                onChange={(event) => setPlaylistName(event.target.value)}
+                            />
+                        </div>
+                        <div className="playlist-description-wrapper">
+                            <label>Playlist Description:</label>
+                            <input
+                                type="text"
+                                required
+                                value={playlistDescription}
+                                onChange={(event) => setPlaylistDescription(event.target.value)}
+                            />
+                        </div>
+                        <div className="private-toggle-wrapper">
+                            <label>Private:</label>
+                            <input
+                                type="checkbox"
+                                checked={isPlaylistPrivate}
+                                onChange={() => setIsPlaylistPrivate(!isPlaylistPrivate)}
+                            />
+                        </div>
+                    </form>
+                    <div className="buttons-wrapper">
                         <button type="button" onClick={async () => {
                             await postNewPlaylist(playlistName, !isPlaylistPrivate, playlistDescription, props.trackIDs);
                             props.setShowPlaylistForm(false);
                             props.resetSelections();
                             }}>
-                            Create Playlist
+                            create
                         </button>
-                        <button type="button" onClick={() => props.setShowPlaylistForm(false)}>Cancel</button>
-                    </div>
+                        <button type="button" onClick={() => props.setShowPlaylistForm(false)}>cancel</button>
+                </div>
             </div>
             <div className="submission-form-tracks-preview">
                 {}

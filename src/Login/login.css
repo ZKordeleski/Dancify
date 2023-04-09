@@ -70,6 +70,10 @@ body {
     font-size: 1.25em;
 }
 
+.Login span:hover, .Login p:hover {
+    text-shadow: 0 0 6px white;
+}
+
 .Login .login-pane {
     display: flex;
     flex-direction: column;

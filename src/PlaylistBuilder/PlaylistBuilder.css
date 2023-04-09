@@ -57,7 +57,7 @@
 
 .PlaylistBuilder .buttons-wrapper button {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: white;
+    color: var(--app-background-color);
     font-size: 110%;
     
 
@@ -71,12 +71,20 @@
     border-radius: 5px;
 }
 
-.PlaylistBuilder .buttons-wrapper .reset-button {
+.PlaylistBuilder .buttons-wrapper button:nth-child(2) {
     background-color: rgb(252, 161, 142);
     box-shadow: 0 0 20px rgb(216, 97, 97, 0.2);
 }
 
-.PlaylistBuilder .buttons-wrapper button:hover {
+.PlaylistBuilder .buttons-wrapper button:nth-child(2):hover {
+    box-shadow: 0 0 20px rgba(252, 160, 142, 0.474);
+    transform: scale(1.02);
+
+    transition: all 100ms ease-in-out;
+}
+
+.PlaylistBuilder button:hover {
+    box-shadow: 0 0 20px #8efca0a7;
     transform: scale(1.02);
 
     transition: all 100ms ease-in-out;

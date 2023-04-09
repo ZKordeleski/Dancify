@@ -8,19 +8,51 @@
 .CreatePlaylist .submission-window {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     
     position: fixed;
     top: 10%;
     left: 10%;
     width: 80%;
     height: 80%;
+    padding: 20px;
     background-color: var(--app-background-color);
     z-index: 10;
 }
 
+.CreatePlaylist .add-playlist-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+}
+
+.CreatePlaylist .add-playlist-form form {
+    display: flex;
+    margin: var(--tile-margin);
+    flex: 1 1 0;
+    gap: var(--tile-margin);
+}
+
+.CreatePlaylist .add-playlist-form form > * {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.CreatePlaylist input {
+    display: flex;
+
+    margin: var(--tile-margin);
+    border: none;
+    border-radius: 3px;
+}
+
 .CreatePlaylist .submission-form-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    flex-grow: 1;
 }
 
 .CreatePlaylist .submission-form-tracks-preview {
@@ -41,10 +73,13 @@
     position: fixed;
 }
 
-.CreatePlaylist .buttons-wrapper {
+.CreatePlaylist .submission-form-wrapper .buttons-wrapper {
     display: flex;
     justify-content: center;
-    flex: 1 0 0;
+
+    gap: 15px;
+    position: sticky;
+    bottom: 5px;
 }
 
 .CreatePlaylist .buttons-wrapper button {
@@ -53,18 +88,18 @@
     font-size: 110%;
     
 
-    background-color: rgba(30, 215, 96, 1);
-    box-shadow: 0 0 20px rgba(30, 215, 96, 0.2);
+    background-color: #8EFCA1;
+    box-shadow: 0 0 12px #8efca0a7;
 
     width: 120px;
     height: 40px;
 
     margin: 10px;
-    margin-bottom: 30px;
 
     border: solid #6D6D6D 1px;
     border-radius: 5px;
 }
+
 
 .CreatePlaylist .buttons-wrapper .reset-button {
     background-color: rgb(216, 97, 97);
