@@ -24,7 +24,8 @@ function PlaylistItem(props: PlaylistItemProps) {
   return (
   <div className={`PlaylistItem ${status}`} onClick={() => (props.setNewSelection(props.playlistInfo, props.selected))}>
     {imageUI}
-    <span className="PlaylistName">{props.playlistInfo.name}</span>
+    <span className="PlaylistName">{props.playlistInfo.name}
+    </span>
   </div>
   );
 }
