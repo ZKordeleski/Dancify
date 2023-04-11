@@ -33,12 +33,16 @@ export interface Track {
 }
 
 export interface AudioFeatures {
-    id: TrackID,
+    id: string,
     danceability: number,
     energy: number,
-    loudness: number,
     valence: number,
-    tempo: number
+    instrumentalness: number,
+    loudness: number,
+    key: number,
+    tempo: number,
+    time_signature: number,
+    duration_ms: number
 }
 
 // =====================
@@ -161,9 +165,13 @@ export namespace Raw {
         id: string,
         danceability: number,
         energy: number,
-        loudness: number,
         valence: number,
-        tempo: number
+        instrumentalness: number,
+        loudness: number,
+        key: number,
+        tempo: number,
+        time_signature: number,
+        duration_ms: number
     }
 }
 
