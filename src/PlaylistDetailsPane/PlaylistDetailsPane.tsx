@@ -7,6 +7,7 @@ import { TrackID } from "../types"
 import { removeUndefined } from "../utilities/removeUndefined"
 import { useCache } from "../utilities/useCache"
 import "./PlaylistDetailsPane.css"
+import { MoodSelector } from "../fixtures/presets"
 
 interface PlaylistDetailsPaneProps {
   trackIDs: (TrackID | undefined)[],
@@ -39,6 +40,18 @@ export interface FilterSettings {
     setMin: FilterBoundSetter,
     setMax: FilterBoundSetter
   }
+}
+
+let defaultFilterSettings = {
+  danceability: [0,1],
+  energy: [0,1],
+  valence: [0,1],
+  instrumentalness: [0,1],
+  loudness: [-1000, 1000],
+  key: [-1,0,1,2,3,4,5,6,7,8,9,10,11],
+  tempo: [0,1000],
+  time_signature: [3,7],
+  duration_ms: [0,2000000]
 }
 
 //NOTE: This component is a holdover from a prior version of the app. It can be removed in future iterations with a refactoring.
@@ -96,6 +109,7 @@ function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
 
   return (
     <div className="PlaylistDetailsPane Tile">
+      <MoodSelector />
       <MetricAssessment trackIDs={props.trackIDs} audioFeatures={sourceAudioFeatures} filterSettings={filterSettings} setFilterSettings={setFilterSettings}/>
       {/* <button onClick={() => setDisplayDetails(!displayDetails)}>Show Details</button> */}
       <PlaylistBuilder filteredTrackIDs={filteredTrackIDs} newPlaylistTrackIDs={props.newPlaylistTrackIDs} addTrack={props.addTrack} removeTrack={props.removeTrack} resetSelections={props.resetSelections}/>
