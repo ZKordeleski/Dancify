@@ -3,7 +3,7 @@ import { getAudioFeatures } from "../fixtures/data"
 import MetricAssessment from "../MetricAssessment/MetricAssessment"
 import "../MetricAssessment/MetricAssessment.css"
 import { PlaylistBuilder } from "../PlaylistBuilder/PlaylistBuilder"
-import { TrackID } from "../types"
+import { AudioFeatures, TrackID } from "../types"
 import { removeUndefined } from "../utilities/removeUndefined"
 import { useCache } from "../utilities/useCache"
 import "./PlaylistDetailsPane.css"
@@ -17,38 +17,26 @@ interface PlaylistDetailsPaneProps {
   resetSelections: () => void
 }
 
-export interface FilterBoundSetter {
-  (filterSettings: FilterSettings, newBound: number): FilterSettings
-}
-
+// TODO: Redefine this type so it's less ugly using "type" and "[K in keyof AudioFeatures]?: [min: number, max: number]" or similar.
 export interface FilterSettings {
-  energy: {
-    min: number,
-    setMin: FilterBoundSetter
-    max: number,
-    setMax: FilterBoundSetter
-  },
-  valence: {
-    min: number,
-    max: number,
-    setMin: FilterBoundSetter
-    setMax: FilterBoundSetter
-  },
-  danceability: {
-    min: number,
-    max: number,
-    setMin: FilterBoundSetter,
-    setMax: FilterBoundSetter
-  }
+  danceability: [min: number, max: number],
+  energy: [min: number, max: number],
+  valence: [min: number, max: number],
+  instrumentalness: [min: number, max: number],
+  loudness: [min: number, max: number],
+  key: [min: number, max: number],
+  tempo: [min: number, max: number],
+  time_signature: [min: number, max: number],
+  duration_ms: [min: number, max: number]
 }
 
-let defaultFilterSettings = {
+let defaultFilterSettings: FilterSettings = {
   danceability: [0,1],
   energy: [0,1],
   valence: [0,1],
   instrumentalness: [0,1],
   loudness: [-1000, 1000],
-  key: [-1,0,1,2,3,4,5,6,7,8,9,10,11],
+  key: [-1,11],
   tempo: [0,1000],
   time_signature: [3,7],
   duration_ms: [0,2000000]
@@ -56,26 +44,6 @@ let defaultFilterSettings = {
 
 //NOTE: This component is a holdover from a prior version of the app. It can be removed in future iterations with a refactoring.
 function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
-  let defaultFilterSettings: FilterSettings = {
-    energy: {
-      min: 0,
-      max: 100,
-      setMin: (filterSettings, newMin) => {filterSettings.energy.min = newMin; return filterSettings},
-      setMax: (filterSettings, newMax) => {filterSettings.energy.max = newMax; return filterSettings}
-    },
-    valence: {
-      min: 0,
-      max: 100,
-      setMin: (filterSettings, newMin) => {filterSettings.valence.min = newMin; return filterSettings},
-      setMax: (filterSettings, newMax) => {filterSettings.valence.max = newMax; return filterSettings}
-    },
-    danceability: {
-      min: 0,
-      max: 100,
-      setMin: (filterSettings, newMin) => {filterSettings.danceability.min = newMin; return filterSettings},
-      setMax: (filterSettings, newMax) => {filterSettings.danceability.max = newMax; return filterSettings}
-    }
-  };
 
   let [filterSettings, setFilterSettings] = useState(defaultFilterSettings);
 
@@ -89,20 +57,22 @@ function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
   if (sourceAudioFeatures !== undefined && definedTrackIDs.length > 0) {
     for (let audioFeatures of sourceAudioFeatures) {
       if (audioFeatures === undefined) {
-        continue
+        continue;
       }
 
-      //TODO: Filtering Process needs moved to PlaylistDetailsPane.
-      let filterConditions = ((audioFeatures !== undefined) &&
-      (audioFeatures.danceability*100 <= filterSettings.danceability.max) &&
-      (audioFeatures.danceability*100 >= filterSettings.danceability.min) &&
-      (audioFeatures.energy*100 <= filterSettings.energy.max) &&
-      (audioFeatures.energy*100 >= filterSettings.energy.min) &&
-      (audioFeatures.valence*100 <= filterSettings.valence.max) &&
-      (audioFeatures.valence*100>= filterSettings.valence.min));
+      filteredTrackIDs.push(audioFeatures.id);
 
-      if (filterConditions) {
-        filteredTrackIDs.push(audioFeatures.id);
+      //TODO: Filtering Process needs moved to PlaylistDetailsPane.
+      for (let metric in filterSettings) {
+        let stupidMetric = metric as keyof FilterSettings;
+        if (
+          audioFeatures[stupidMetric] >= (filterSettings[stupidMetric])[0] && 
+          audioFeatures[stupidMetric] <= (filterSettings[stupidMetric])[1]) {
+            continue;
+          } else {
+            filteredTrackIDs.pop();
+            break;
+          }
       }
     }
   }

@@ -30,6 +30,10 @@ const moodPresets: MoodPreset[] = [
     }
 ];
 
+export interface MoodSelectorProps {
+    
+}
+
 export function MoodSelector() {
     return(
         <div className="MoodSelector">
