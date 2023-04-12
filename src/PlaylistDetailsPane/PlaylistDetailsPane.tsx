@@ -46,7 +46,6 @@ let defaultFilterSettings: FilterSettings = {
 function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
 
   let [filterSettings, setFilterSettings] = useState(defaultFilterSettings);
-  console.log(filterSettings);
 
   let definedTrackIDs = removeUndefined(props.trackIDs);
 

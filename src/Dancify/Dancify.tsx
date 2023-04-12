@@ -7,6 +7,7 @@ import PlaylistPane from "../PlaylistPane/PlaylistPane"
 import { Playlist, TrackID } from "../types"
 import { useCache } from "../utilities/useCache"
 import "./Dancify.css"
+import { Virtuoso } from "react-virtuoso"
 
 if (location.href.includes("?code=")) {
   exchangeCodeForToken();
@@ -55,12 +56,19 @@ function Dancify() {
     let updatedNewPlaylist = newPlaylist.slice(0, index).concat(newPlaylist.slice(index+1));
     setNewPlaylist(updatedNewPlaylist);
   }
+
+  let virtualizedList = <Virtuoso
+    style={{ height: "400px", }}
+    totalCount={200}
+    itemContent={(index) => <div>Item {index}</div>}
+  />
   
   if (token === undefined) {
     return <Login />
   } else {
     return (
       <div className="Dancify">
+        {virtualizedList}
         <PlaylistPane playlistIDs={playlistIDs} setNewSelection={setNewSelection} selectedPlaylists={selectedPlaylists} />
         <PlaylistDetailsPane trackIDs={uniqueSelectedPlaylistTrackIDs || []} newPlaylistTrackIDs={newPlaylist} addTrack={addTrack} removeTrack={removeTrack} resetSelections={resetSelections} key={selectedPlaylists?.map((playlist) => playlist.id).toString()} />
         {/* <FunctionSelection selectedPlaylistTrackIDs={selectedPlaylistTrackIDs} setDancifiedTracks={setDancifiedTracks} /> */}

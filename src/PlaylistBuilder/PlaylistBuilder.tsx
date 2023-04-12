@@ -1,12 +1,12 @@
 import { useState } from "react";
 import CreatePlaylist from "../CreatePlaylist/CreatePlaylist";
-import { FilterSettings } from "../PlaylistDetailsPane/PlaylistDetailsPane";
 import TrackItem from "../TrackItem/TrackItem";
 import { getAudioFeatures, getTrack } from "../fixtures/data";
 import { TrackID } from "../types";
 import { removeUndefined } from "../utilities/removeUndefined";
 import { useCache } from "../utilities/useCache";
 import "./PlaylistBuilder.css";
+import { Virtuoso } from "react-virtuoso";
 
 interface PlaylistBuilderProps {
   filteredTrackIDs: TrackID[],
@@ -22,8 +22,14 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
   let newPlaylistTracks = removeUndefined(useCache(props.newPlaylistTrackIDs, getTrack));
   let newPlaylistAudioFeatures = useCache(props.newPlaylistTrackIDs, getAudioFeatures);
 
-  let sourceTrackTiles = [];
+  let sourceTrackTiles: JSX.Element[] = [];
   let newTrackTiles = [];
+
+  let virtualizedList = <Virtuoso 
+    style={{height: "900px"}}
+    totalCount={filteredTracks.length}
+    itemContent={(i) => <TrackItem trackInfo={filteredTracks[i]} index={i} buttonType={"add"} addRemoveTrack={props.addTrack} key={filteredTracks[i].id} />} 
+  />
 
   for (let i = 0; i < filteredTracks.length; i++) {
     // Consider removing these tracks from the audio features get as well to keep the chart "live".
