@@ -7,7 +7,7 @@ import { AudioFeatures, TrackID } from "../types"
 import { removeUndefined } from "../utilities/removeUndefined"
 import { useCache } from "../utilities/useCache"
 import "./PlaylistDetailsPane.css"
-import { MoodSelector } from "../fixtures/presets"
+import { MoodSelector } from "../MoodSelector/MoodSelector"
 
 interface PlaylistDetailsPaneProps {
   trackIDs: (TrackID | undefined)[],
@@ -53,6 +53,14 @@ function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
 
   let filteredTrackIDs: TrackID[] = [];
 
+  // TODO: Filter settings will be updated with presets.
+  // -- -- Need to make range sliders adjust positioning, though. Probably connect their state to filters.
+  // -- -- This would involve passing filter settings to range sliders to read their min / max.
+  // -- -- Not sure how passing this would affect their own states? Something to consider.
+  function updateFilterSettings(updatedSettings: Partial<FilterSettings>) {
+    setFilterSettings({...filterSettings, ...updatedSettings})
+  }
+
   // Computes the total danceability, energy, and valence of the playlist for averaging later.
   if (sourceAudioFeatures !== undefined && definedTrackIDs.length > 0) {
     for (let audioFeatures of sourceAudioFeatures) {
@@ -79,7 +87,7 @@ function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
 
   return (
     <div className="PlaylistDetailsPane Tile">
-      <MoodSelector />
+      <MoodSelector setFilterPreset={updateFilterSettings} />
       <MetricAssessment trackIDs={props.trackIDs} audioFeatures={sourceAudioFeatures} filterSettings={filterSettings} setFilterSettings={setFilterSettings}/>
       {/* <button onClick={() => setDisplayDetails(!displayDetails)}>Show Details</button> */}
       <PlaylistBuilder filteredTrackIDs={filteredTrackIDs} newPlaylistTrackIDs={props.newPlaylistTrackIDs} addTrack={props.addTrack} removeTrack={props.removeTrack} resetSelections={props.resetSelections}/>

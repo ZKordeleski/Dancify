@@ -1,0 +1,23 @@
+.MoodSelector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: calc(4 * var(--tile-margin));
+}
+
+.MoodPresetButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: "Verdana";
+}
+
+.MoodPresetButton .mood-icon {
+    font-size: 3em;
+}
+
+.MoodPresetButton .mood-name {
+    font-size: 1em;
+}

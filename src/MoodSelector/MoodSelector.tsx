@@ -1,6 +1,8 @@
 // data, preset buttons component (displays presets), preset button component
 
+import { FilterSettings } from "../PlaylistDetailsPane/PlaylistDetailsPane";
 import { AudioFeatures } from "../types"
+import "./MoodSelector.css"
 
 export interface MoodPreset {
     name: string,
@@ -31,25 +33,26 @@ const moodPresets: MoodPreset[] = [
 ];
 
 export interface MoodSelectorProps {
-    
+    setFilterPreset: (moodSettings: Partial<FilterSettings>) => void;
 }
 
-export function MoodSelector() {
+export function MoodSelector(props: MoodSelectorProps) {
     return(
         <div className="MoodSelector">
-            {moodPresets.map((mood) => <MoodPresetButton mood={mood} />)}
+            {moodPresets.map((mood) => <MoodPresetButton mood={mood} setFilterPreset={props.setFilterPreset}/>)}
         </div>
     )
 }
 
 export interface MoodPresetButtonProps {
-    mood: MoodPreset
+    mood: MoodPreset,
+    setFilterPreset: (moodSettings: Partial<FilterSettings>) => void;
 }
 
 export function MoodPresetButton(props: MoodPresetButtonProps) {
 
     return(
-        <div className="MoodPresetButton">
+        <div className="MoodPresetButton" onClick={() => {props.setFilterPreset(props.mood.audioMetrics); console.log(props.mood.audioMetrics)}}>
             <div className="mood-icon">{props.mood.icon}</div>
             <div className="mood-name">{props.mood.name}</div>
         </div>

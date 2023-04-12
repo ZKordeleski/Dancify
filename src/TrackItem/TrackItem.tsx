@@ -19,7 +19,7 @@ function TrackItem(props: TrackInfoProps) {
   let artistNames: string[] = [];
   for (let artist of artists || []) {
     if (artist !== undefined) {
-      artistNames.push(artist.name);
+      artistNames.push(" " + artist.name);
     }
   }
   return (
@@ -31,7 +31,7 @@ function TrackItem(props: TrackInfoProps) {
             <span>{props.trackInfo.name}</span>
           </div>
           <div className="TrackArtists">
-            <span>{artistNames}</span>
+            <span>{artistNames.toString()}</span>
           </div>
         </div>
       </div>

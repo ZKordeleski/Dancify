@@ -56,7 +56,6 @@
 }
 
 .PlaylistBuilder .buttons-wrapper button {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: var(--app-background-color);
     font-size: 110%;
     
