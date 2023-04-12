@@ -337,7 +337,7 @@ export async function fetchCurrentUserPlaylists(userID: string) {
 
     // User's Saved Tracks
     // NOTE: Has to cycle through fetching until the "next" parameter is gone, signifying all user saved tracks are fetched.
-    let responseSavedTracks: Response.UserSavedTracks = await (await fetch(`https://api.spotify.com/v1/me/tracks`, {
+    let responseSavedTracks: Response.UserSavedTracks = await (await fetch(`https://api.spotify.com/v1/me/tracks?limit=50`, {
         headers: {
             "Authorization": "Bearer " + token,
             "Content-Type": "application/json"
