@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import { FilterBoundSetter, FilterSettings } from '../PlaylistDetailsPane/PlaylistDetailsPane';
 import './RangeSlider.css'
 
 interface RangeSliderProps {
   min: number,
   max: number,
   step: number,
-  filterSettings: FilterSettings,
-  setFilterSettings: (filterSettings: FilterSettings) => void,
-  setMin: FilterBoundSetter,
-  setMax: FilterBoundSetter,
-  name: string,
+  setBounds: (min: number, max: number, key: string) => void,
+  key: string,
   color: string
 }
 
@@ -25,9 +21,7 @@ export function RangeSlider(props: RangeSliderProps) {
     // it should not exceed the current max value!
     const newMin = Math.min(value, maxValue - props.step);
     setSliderMin(newMin);
-    const newFilterSettings = {...props.filterSettings};
-    const updatedFilterSettings = props.setMin(newFilterSettings, newMin);
-    props.setFilterSettings(updatedFilterSettings);
+    props.setBounds(newMin, maxValue, props.key);
   };
   
   const handleMaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,9 +31,7 @@ export function RangeSlider(props: RangeSliderProps) {
     // it must not be less than the current min value!
     const newMax = Math.max(value, minValue + props.step);
     setSliderMax(newMax);
-    const newFilterSettings = {...props.filterSettings};
-    const updatedFilterSettings = props.setMax(newFilterSettings, newMax);
-    props.setFilterSettings(updatedFilterSettings);
+    props.setBounds(minValue, newMax, props.key);
   };
 
   const minPos = ((minValue - props.min) / (props.max - props.min)) * 100;
@@ -49,7 +41,7 @@ export function RangeSlider(props: RangeSliderProps) {
     <div className="RangeSlider">
       <div className={"sliders-wrapper"} >
         <input
-          name={props.name + ' minimum value'}
+          name={props.key + ' minimum value'}
           className="min-slider"
           type="range"
           value={minValue}
@@ -59,7 +51,7 @@ export function RangeSlider(props: RangeSliderProps) {
           onChange={handleMinChange}
         />
         <input
-          name={props.name + ' maximum value'}
+          name={props.key + ' maximum value'}
           className="max-slider"
           type="range"
           value={maxValue}

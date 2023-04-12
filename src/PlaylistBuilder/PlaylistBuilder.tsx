@@ -16,34 +16,11 @@ interface PlaylistBuilderProps {
   resetSelections: () => void
 }
 
-
-let defaultFilterSettings: FilterSettings = {
-  energy: {
-    min: 0,
-    max: 100,
-    setMin: (filterSettings, newMin) => {filterSettings.energy.min = newMin; return filterSettings},
-    setMax: (filterSettings, newMax) => {filterSettings.energy.max = newMax; return filterSettings}
-  },
-  valence: {
-    min: 0,
-    max: 100,
-    setMin: (filterSettings, newMin) => {filterSettings.valence.min = newMin; return filterSettings},
-    setMax: (filterSettings, newMax) => {filterSettings.valence.max = newMax; return filterSettings}
-  },
-  danceability: {
-    min: 0,
-    max: 100,
-    setMin: (filterSettings, newMin) => {filterSettings.danceability.min = newMin; return filterSettings},
-    setMax: (filterSettings, newMax) => {filterSettings.danceability.max = newMax; return filterSettings}
-  }
-};
-
 export function PlaylistBuilder(props: PlaylistBuilderProps) {
   let [showPlaylistForm, setShowPlaylistForm] = useState(false);
   let filteredTracks = removeUndefined(useCache(props.filteredTrackIDs, getTrack));
   let newPlaylistTracks = removeUndefined(useCache(props.newPlaylistTrackIDs, getTrack));
   let newPlaylistAudioFeatures = useCache(props.newPlaylistTrackIDs, getAudioFeatures);
-  let [filterSettings, setFilterSettings] = useState(defaultFilterSettings);
 
   let sourceTrackTiles = [];
   let newTrackTiles = [];
