@@ -6,7 +6,7 @@ interface RangeSliderProps {
   max: number,
   step: number,
   setBounds: (min: number, max: number, key: string) => void,
-  key: string,
+  name: string,
   color: string
 }
 
@@ -21,7 +21,7 @@ export function RangeSlider(props: RangeSliderProps) {
     // it should not exceed the current max value!
     const newMin = Math.min(value, maxValue - props.step);
     setSliderMin(newMin);
-    props.setBounds(newMin, maxValue, props.key);
+    props.setBounds(newMin, maxValue, props.name);
   };
   
   const handleMaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +31,7 @@ export function RangeSlider(props: RangeSliderProps) {
     // it must not be less than the current min value!
     const newMax = Math.max(value, minValue + props.step);
     setSliderMax(newMax);
-    props.setBounds(minValue, newMax, props.key);
+    props.setBounds(minValue, newMax, props.name);
   };
 
   const minPos = ((minValue - props.min) / (props.max - props.min)) * 100;
@@ -41,7 +41,7 @@ export function RangeSlider(props: RangeSliderProps) {
     <div className="RangeSlider">
       <div className={"sliders-wrapper"} >
         <input
-          name={props.key + ' minimum value'}
+          name={props.name + ' minimum value'}
           className="min-slider"
           type="range"
           value={minValue}
@@ -51,7 +51,7 @@ export function RangeSlider(props: RangeSliderProps) {
           onChange={handleMinChange}
         />
         <input
-          name={props.key + ' maximum value'}
+          name={props.name + ' maximum value'}
           className="max-slider"
           type="range"
           value={maxValue}

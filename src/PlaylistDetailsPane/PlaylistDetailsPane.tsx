@@ -24,7 +24,7 @@ export interface FilterSettings {
   valence: [min: number, max: number],
   instrumentalness: [min: number, max: number],
   loudness: [min: number, max: number],
-  key: [min: number, max: number],
+  key_signature: [min: number, max: number],
   tempo: [min: number, max: number],
   time_signature: [min: number, max: number],
   duration_ms: [min: number, max: number]
@@ -36,7 +36,7 @@ let defaultFilterSettings: FilterSettings = {
   valence: [0,1],
   instrumentalness: [0,1],
   loudness: [-1000, 1000],
-  key: [-1,11],
+  key_signature: [-1,11],
   tempo: [0,1000],
   time_signature: [3,7],
   duration_ms: [0,2000000]
@@ -46,6 +46,7 @@ let defaultFilterSettings: FilterSettings = {
 function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
 
   let [filterSettings, setFilterSettings] = useState(defaultFilterSettings);
+  console.log(filterSettings);
 
   let definedTrackIDs = removeUndefined(props.trackIDs);
 

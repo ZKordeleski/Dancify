@@ -39,7 +39,7 @@ export interface AudioFeatures {
     valence: number,
     instrumentalness: number,
     loudness: number,
-    key: number,
+    key_signature: number,
     tempo: number,
     time_signature: number,
     duration_ms: number

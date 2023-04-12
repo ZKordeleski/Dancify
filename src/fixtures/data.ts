@@ -707,9 +707,10 @@ export async function fetchAudioFeatures(trackIDs: TrackID[]) {
     })).json();
 
     // Store track audio features in an object organized by key.
+    // HACK: Currently has "key" and "key_signature" on it. key_signature was added and named in AudioFeatures type to prevent "key" confusion.
     for (let trackFeatures of responseAudioFeatures.audio_features as Raw.AudioFeatures[]) {
         let trackID = trackFeatures.id;
-        audioFeaturesByTrackID[trackID] = trackFeatures;
+        audioFeaturesByTrackID[trackID] = {...trackFeatures, key_signature: trackFeatures.key};
     }
 }
 

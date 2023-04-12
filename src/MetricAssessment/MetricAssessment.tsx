@@ -100,7 +100,7 @@ function MetricAssessment(props: MetricAssessmentProps) {
   let valenceChart = makeBarChart("Valence Distribution", valenceFrequencyDistribution, '#A18EFC', Math.max(...valenceFrequencyDistribution));
 
   function boundSetter(min: number, max: number, key: string): void {
-    props.setFilterSettings({...props.filterSettings, key: [min, max]});
+    props.setFilterSettings({...props.filterSettings, [key]: [min, max]});
   }
 
 
@@ -111,19 +111,19 @@ function MetricAssessment(props: MetricAssessmentProps) {
           <div className="chart-wrapper">
             {energyChart}
           </div>
-          <RangeSlider min={0} max={100} step={10} setBounds={boundSetter} key={"energy"} color={'#8EFCA1'} />
+          <RangeSlider min={0} max={1} step={.1} setBounds={boundSetter} name={"energy"} color={'#8EFCA1'} />
         </div>
         <div className="histogram-filter">
           <div className="chart-wrapper">
             {valenceChart}
           </div>
-          <RangeSlider min={0} max={100} step={10} setBounds={boundSetter} key={'valence'} color={'#A18EFC'} />
+          <RangeSlider min={0} max={1} step={.1} setBounds={boundSetter} name={'valence'} color={'#A18EFC'} />
         </div>
         <div className="histogram-filter">
           <div className="chart-wrapper">
             {danceabilityChart}
           </div>
-          <RangeSlider min={0} max={100} step={10} setBounds={boundSetter} key={'danceability'} color={'#FCA18E'} />
+          <RangeSlider min={0} max={1} step={.1} setBounds={boundSetter} name={'danceability'} color={'#FCA18E'} />
         </div>
       </div>
       <div className="metrics">
