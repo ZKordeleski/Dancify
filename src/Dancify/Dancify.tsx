@@ -23,9 +23,6 @@ function Dancify() {
   let [newPlaylist, setNewPlaylist] = useState<TrackID[]>([]);
   let [dancifiedTracks, setDancifiedTracks] = useState<TrackID[]>()
   let selectedPlaylistsTrackIDs = useCache(selectedPlaylists.map((playlist => playlist.id)), getPlaylistTracks)?.flat()
-  let uniqueSelectedPlaylistTrackIDs = selectedPlaylistsTrackIDs?.filter((trackID, i, selectedPlaylistsTrackIDs) => {
-    return selectedPlaylistsTrackIDs.indexOf(trackID) === i;
-  });
 
   
   function setNewSelection(newSelectedPlaylist: Playlist, selected: boolean) {
@@ -63,7 +60,7 @@ function Dancify() {
     return (
       <div className="Dancify">
         <PlaylistPane playlistIDs={playlistIDs} setNewSelection={setNewSelection} selectedPlaylists={selectedPlaylists} />
-        <PlaylistDetailsPane trackIDs={uniqueSelectedPlaylistTrackIDs} newPlaylistTrackIDs={newPlaylist} addTrack={addTrack} removeTrack={removeTrack} resetSelections={resetSelections} key={selectedPlaylists?.map((playlist) => playlist.id).toString()} />
+        <PlaylistDetailsPane trackIDs={selectedPlaylistsTrackIDs} newPlaylistTrackIDs={newPlaylist} addTrack={addTrack} removeTrack={removeTrack} resetSelections={resetSelections} key={selectedPlaylists?.map((playlist) => playlist.id).toString()} />
         {/* <FunctionSelection selectedPlaylistTrackIDs={selectedPlaylistTrackIDs} setDancifiedTracks={setDancifiedTracks} /> */}
         {/* <PlaylistDetailsPane trackIDs={dancifiedTracks} key={selectedPlaylist?.id + "dancified"}/> */}
       </div>

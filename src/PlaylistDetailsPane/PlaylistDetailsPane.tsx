@@ -44,14 +44,17 @@ export let defaultFilterSettings: FilterSettings = {
 
 //NOTE: This component is a holdover from a prior version of the app. It can be removed in future iterations with a refactoring.
 function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
-
-  if (props.trackIDs === undefined) {
+  if (props.trackIDs === undefined || props.trackIDs.length === 0) {
     return null;
   }
 
+  let uniqueSelectedPlaylistTrackIDs = props.trackIDs.filter((trackID, i, selectedPlaylistsTrackIDs) => {
+    return selectedPlaylistsTrackIDs.indexOf(trackID) === i;
+  });
+
   let [filterSettings, setFilterSettings] = useState(defaultFilterSettings);
 
-  let definedTrackIDs = removeUndefined(props.trackIDs);
+  let definedTrackIDs = removeUndefined(uniqueSelectedPlaylistTrackIDs);
 
   let sourceAudioFeatures = useCache(definedTrackIDs || [], getAudioFeatures);
 
@@ -92,7 +95,7 @@ function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
   return (
     <div className="PlaylistDetailsPane Tile">
       <MoodSelector setFilterPreset={updateFilterSettings} />
-      <MetricAssessment trackIDs={props.trackIDs} audioFeatures={sourceAudioFeatures} filterSettings={filterSettings} setFilterSettings={setFilterSettings}/>
+      <MetricAssessment trackIDs={uniqueSelectedPlaylistTrackIDs} audioFeatures={sourceAudioFeatures} filterSettings={filterSettings} setFilterSettings={setFilterSettings}/>
       {/* <button onClick={() => setDisplayDetails(!displayDetails)}>Show Details</button> */}
       <PlaylistBuilder filteredTrackIDs={filteredTrackIDs} newPlaylistTrackIDs={props.newPlaylistTrackIDs} addTrack={props.addTrack} removeTrack={props.removeTrack} resetSelections={props.resetSelections}/>
     </div>
