@@ -25,6 +25,10 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
   let sourceTrackTiles: JSX.Element[] = [];
   let newTrackTiles = [];
 
+  if (filteredTracks === undefined) {
+    return null;
+  }
+
   let virtualizedList = <Virtuoso 
     style={{height: "900px"}}
     totalCount={filteredTracks.length}

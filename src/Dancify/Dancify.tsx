@@ -63,7 +63,7 @@ function Dancify() {
     return (
       <div className="Dancify">
         <PlaylistPane playlistIDs={playlistIDs} setNewSelection={setNewSelection} selectedPlaylists={selectedPlaylists} />
-        <PlaylistDetailsPane trackIDs={uniqueSelectedPlaylistTrackIDs || []} newPlaylistTrackIDs={newPlaylist} addTrack={addTrack} removeTrack={removeTrack} resetSelections={resetSelections} key={selectedPlaylists?.map((playlist) => playlist.id).toString()} />
+        <PlaylistDetailsPane trackIDs={uniqueSelectedPlaylistTrackIDs} newPlaylistTrackIDs={newPlaylist} addTrack={addTrack} removeTrack={removeTrack} resetSelections={resetSelections} key={selectedPlaylists?.map((playlist) => playlist.id).toString()} />
         {/* <FunctionSelection selectedPlaylistTrackIDs={selectedPlaylistTrackIDs} setDancifiedTracks={setDancifiedTracks} /> */}
         {/* <PlaylistDetailsPane trackIDs={dancifiedTracks} key={selectedPlaylist?.id + "dancified"}/> */}
       </div>

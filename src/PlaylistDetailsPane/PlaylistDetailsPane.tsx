@@ -10,7 +10,7 @@ import "./PlaylistDetailsPane.css"
 import { MoodSelector } from "../MoodSelector/MoodSelector"
 
 interface PlaylistDetailsPaneProps {
-  trackIDs: (TrackID | undefined)[],
+  trackIDs: (TrackID | undefined)[] | undefined,
   newPlaylistTrackIDs: TrackID[],
   addTrack: (trackID: TrackID, index: number) => void,
   removeTrack: (trackID: TrackID, index: number) => void,
@@ -30,7 +30,7 @@ export interface FilterSettings {
   duration_ms: [min: number, max: number]
 }
 
-let defaultFilterSettings: FilterSettings = {
+export let defaultFilterSettings: FilterSettings = {
   danceability: [0,1],
   energy: [0,1],
   valence: [0,1],
@@ -45,11 +45,15 @@ let defaultFilterSettings: FilterSettings = {
 //NOTE: This component is a holdover from a prior version of the app. It can be removed in future iterations with a refactoring.
 function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
 
+  if (props.trackIDs === undefined) {
+    return null;
+  }
+
   let [filterSettings, setFilterSettings] = useState(defaultFilterSettings);
 
   let definedTrackIDs = removeUndefined(props.trackIDs);
 
-  let sourceAudioFeatures = useCache(definedTrackIDs, getAudioFeatures);
+  let sourceAudioFeatures = useCache(definedTrackIDs || [], getAudioFeatures);
 
   let filteredTrackIDs: TrackID[] = [];
 
@@ -58,11 +62,11 @@ function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
   // -- -- This would involve passing filter settings to range sliders to read their min / max.
   // -- -- Not sure how passing this would affect their own states? Something to consider.
   function updateFilterSettings(updatedSettings: Partial<FilterSettings>) {
-    setFilterSettings({...filterSettings, ...updatedSettings})
+    setFilterSettings({...defaultFilterSettings, ...updatedSettings})
   }
 
   // Computes the total danceability, energy, and valence of the playlist for averaging later.
-  if (sourceAudioFeatures !== undefined && definedTrackIDs.length > 0) {
+  if (sourceAudioFeatures !== undefined && definedTrackIDs !== undefined) {
     for (let audioFeatures of sourceAudioFeatures) {
       if (audioFeatures === undefined) {
         continue;

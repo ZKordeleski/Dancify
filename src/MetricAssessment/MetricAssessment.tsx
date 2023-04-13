@@ -18,7 +18,7 @@ interface MetricAssessmentProps {
 
 function MetricAssessment(props: MetricAssessmentProps) {
   let definedTrackIDs = removeUndefined(props.trackIDs);
-  let trackList = useCache(definedTrackIDs, getTrack) || [];
+  let trackList = useCache(definedTrackIDs || [], getTrack) || [];
 
   let playlistMetrics = {
     danceability: {
@@ -59,7 +59,7 @@ function MetricAssessment(props: MetricAssessmentProps) {
   let danceabilityDataset = [];
 
   // Computes the total danceability, energy, and valence of the playlist for averaging later.
-  if (props.audioFeatures !== undefined && definedTrackIDs.length > 0) {
+  if (props.audioFeatures !== undefined && definedTrackIDs !== undefined) {
     let numberOfTracksWithAudioFeatures: number = 0;
     for (let audioFeatures of props.audioFeatures) {
       if (audioFeatures === undefined) {
