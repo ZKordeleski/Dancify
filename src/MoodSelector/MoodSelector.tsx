@@ -15,7 +15,7 @@ export interface MoodPreset {
 const moodPresets: MoodPreset[] = [
     {
         name: "Danceable",
-        icon: "😀",
+        icon: "💃",
         audioMetrics: {
             danceability: [.6, 1]
         }

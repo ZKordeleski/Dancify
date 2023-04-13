@@ -1,5 +1,5 @@
 :root {
-    --accent-grey: #34303b;
+    --accent-grey: #2d273b;
     --beats-per-minute: 122;
     --loading-animation-duration: calc(4 * 60 / var(--beats-per-minute) * 1s);
     --accent-peach: #FCA18E;

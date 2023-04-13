@@ -10,7 +10,7 @@
 
     align-items: center;
 
-    background-color: #2d273b;
+    background-color: var(--accent-grey);
 }
 
 .Meter .Value {
