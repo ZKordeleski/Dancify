@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react";
 
 // A cache function which allows you to grab information on an item using its id.
+
 export function useCache<Type>(ids: string[], getType: (id: string) => Promise<Type>): Type[] | undefined {
     
     let [cache, setCache] = useState<Type[] | undefined>(undefined);
 
+    let stack: any;
+    try {
+    throw new Error();
+    } catch(err) {
+        stack = (err as any).stack;
+    }
+
     useEffect(() => {
+        console.log(ids);
+        console.log(stack);
         let cachePromises: Promise<Type>[] = [];
         
         if (ids === undefined) {
@@ -16,10 +26,10 @@ export function useCache<Type>(ids: string[], getType: (id: string) => Promise<T
         for (let id of ids) {
             cachePromises.push(getType(id).then((result) => {
                 // We want to update trigger a rerender when individual items complete loading as a step towards "partial loading" or "streaming" results.
-                let loadedItems: Type[] = (cache === undefined) ? [] : cache;
-                loadedItems.push(result);
-                setCache(loadedItems);
-                console.log(cache);
+                setCache((oldCache) => {
+                    let newCache = (oldCache === undefined) ? [result] : [...oldCache, result];
+                    return newCache;
+                });
                 return result;
             }));
         }
