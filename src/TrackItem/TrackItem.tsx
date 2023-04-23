@@ -23,7 +23,7 @@ function TrackItem(props: TrackInfoProps) {
     }
   }
   return (
-    <div className={"TrackItem " + props.buttonType + "TrackItem"}>
+    <div className={"TrackItem " + props.buttonType + "TrackItem"} onClick={() => props.addRemoveTrack(props.trackInfo.id, props.index)}>
       <div className="track-info-wrapper">
         <div className="track-image" style={{backgroundImage: `url("${props.trackInfo.images[0].url}")`}} />
         <div className="TextContainer">

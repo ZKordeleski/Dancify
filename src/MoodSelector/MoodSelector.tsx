@@ -52,7 +52,7 @@ export interface MoodPresetButtonProps {
 export function MoodPresetButton(props: MoodPresetButtonProps) {
 
     return(
-        <div className="MoodPresetButton" onClick={() => {props.setFilterPreset(props.mood.audioMetrics); console.log(props.mood.audioMetrics)}}>
+        <div className="MoodPresetButton" onClick={() => {props.setFilterPreset(props.mood.audioMetrics)}}>
             <div className="mood-icon">{props.mood.icon}</div>
             <div className="mood-name">{props.mood.name}</div>
         </div>

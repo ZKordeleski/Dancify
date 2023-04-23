@@ -18,7 +18,7 @@ interface PlaylistBuilderProps {
 
 export function PlaylistBuilder(props: PlaylistBuilderProps) {
   let [showPlaylistForm, setShowPlaylistForm] = useState(false);
-  let filteredTracks = removeUndefined(useCache(props.filteredTrackIDs, getTrack));
+  const filteredTracks = removeUndefined(useCache(props.filteredTrackIDs, getTrack));
   let newPlaylistTracks = removeUndefined(useCache(props.newPlaylistTrackIDs, getTrack));
   let newPlaylistAudioFeatures = useCache(props.newPlaylistTrackIDs, getAudioFeatures);
 
@@ -29,10 +29,15 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
     return null;
   }
 
+  if (newPlaylistTracks === undefined) {
+    newPlaylistTracks = [];
+  }
+
+  // TODO: Prefilter the tracks (removing duplicates) to the virtualized list.
   let virtualizedList = <Virtuoso 
-    style={{height: "900px"}}
-    totalCount={filteredTracks.length}
-    itemContent={(i) => <TrackItem trackInfo={filteredTracks[i]} index={i} buttonType={"add"} addRemoveTrack={props.addTrack} key={filteredTracks[i].id} />} 
+    // totalCount={filteredTracks.length}
+    data={filteredTracks}
+    itemContent={(i, track) => <TrackItem trackInfo={track} index={i} buttonType={"add"} addRemoveTrack={props.addTrack} key={track.id} />}
   />
 
   for (let i = 0; i < filteredTracks.length; i++) {
@@ -74,7 +79,8 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
       <div className="playlists-window">
         <div className="source-playlist-info" >
           <div className="source-playlist playlist-tiles-wrapper">
-            {sourceTrackTiles}
+            {virtualizedList}
+            {/* {sourceTrackTiles} */}
           </div>
         </div>
         <div className="new-playlist-info">

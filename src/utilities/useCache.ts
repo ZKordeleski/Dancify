@@ -9,13 +9,23 @@ export function useCache<Type>(ids: string[], getType: (id: string) => Promise<T
         let cachePromises: Promise<Type>[] = [];
         
         if (ids === undefined) {
-            return
+            return;
         }
 
+
         for (let id of ids) {
-            cachePromises.push(getType(id));
+            cachePromises.push(getType(id).then((result) => {
+                // We want to update trigger a rerender when individual items complete loading as a step towards "partial loading" or "streaming" results.
+                let loadedItems: Type[] = (cache === undefined) ? [] : cache;
+                loadedItems.push(result);
+                setCache(loadedItems);
+                console.log(cache);
+                return result;
+            }));
         }
+
         let allPromises = Promise.all(cachePromises);
+
         allPromises.then((result) => {
             setCache(result);
         });

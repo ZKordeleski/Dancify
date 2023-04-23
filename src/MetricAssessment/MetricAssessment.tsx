@@ -54,6 +54,18 @@ function MetricAssessment(props: MetricAssessmentProps) {
     })
   }
 
+  let datasets: {[audioFeature: string]: number[]} = {
+    danceability: [],
+    energy: [],
+    valence: [],
+    instrumentalness: [],
+    loudness: [],
+    key_signature: [],
+    tempo: [],
+    time_signature: [],
+    duration_ms: []
+  }
+
   let energyDataset = [];
   let valenceDataset = [];
   let danceabilityDataset = [];
@@ -77,6 +89,8 @@ function MetricAssessment(props: MetricAssessmentProps) {
       // Valence Computations
       playlistMetrics.valence.total += audioFeatures.valence;
       valenceDataset.push(audioFeatures.valence);
+
+      // Instrumentalness Computations
 
       // Misc Computations
       numberOfTracksWithAudioFeatures++;
@@ -111,26 +125,26 @@ function MetricAssessment(props: MetricAssessmentProps) {
           <div className="chart-wrapper">
             {energyChart}
           </div>
-          <RangeSlider min={0} max={1} step={.025} setBounds={boundSetter} name={"energy"} color={'#8EFCA1'} />
+          <RangeSlider min={0} max={1} step={.025} filterRange={props.filterSettings.energy} setBounds={boundSetter} name={"energy"} color={'#8EFCA1'} />
         </div>
         <div className="histogram-filter">
           <div className="chart-wrapper">
             {valenceChart}
           </div>
-          <RangeSlider min={0} max={1} step={.025} setBounds={boundSetter} name={'valence'} color={'#A18EFC'} />
+          <RangeSlider min={0} max={1} step={.025} filterRange={props.filterSettings.valence} setBounds={boundSetter} name={'valence'} color={'#A18EFC'} />
         </div>
         <div className="histogram-filter">
           <div className="chart-wrapper">
             {danceabilityChart}
           </div>
-          <RangeSlider min={0} max={1} step={.025} setBounds={boundSetter} name={'danceability'} color={'#FCA18E'} />
+          <RangeSlider min={0} max={1} step={.025} filterRange={props.filterSettings.danceability} setBounds={boundSetter} name={'danceability'} color={'#FCA18E'} />
         </div>
       </div>
       <div className="metrics">
         <div className="averages playlist-stats">
-          <Meter name={"Energy"} value={(100*playlistMetrics.energy.average).toPrecision(2) + "%"} />
-          <Meter name={"Valence"} value={(100*playlistMetrics.valence.average).toPrecision(2) + "%"} />
-          <Meter name={"Danceability"} value={(100*playlistMetrics.danceability.average).toPrecision(2) + "%"} />
+          <Meter name={"Energy"} value={(100*playlistMetrics.energy.average).toPrecision(2) || 0 + "%"} />
+          <Meter name={"Valence"} value={(100*playlistMetrics.valence.average).toPrecision(2) || 0 + "%"} />
+          <Meter name={"Danceability"} value={(100*playlistMetrics.danceability.average).toPrecision(2) || 0 + "%"} />
         </div>
         <div className="playlist-stats">
           <Meter name={"Minutes"} value={(Math.round((playlistMetrics.duration.total/1000)/60))} />

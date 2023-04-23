@@ -41,35 +41,7 @@ function PlaylistPane(props: PlaylistPaneProps) {
     }
   }
 
-  // const rowCount = 5000;
-  // const listHeight = 400;
-  // const rowHeight = 50;
-  // const rowWidth = 700;
-
-  // const list = playlistTiles;
-
-  // function renderRow({ index, key, style }) {
-  //   return (
-  //     <div key={key} style={style} className="row">
-  //       <div className="image">
-  //         <img src="404" alt="" />
-  //       </div>
-  //       <div className="content">
-  //         <div>{list[index].key}</div>
-  //         <div>{list[index].key}</div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
   return (
-    // <List
-    //   width={300}
-    //   height={1200}
-    //   rowHeight={30}
-    //   rowRenderer={renderRow}
-    //   rowCount={list.length}
-    //   overscanRowCount={3} />
     <div className={`PlaylistPane ${status}`}>
       {[...selectedPlaylistTiles, ...playlistTiles]}
     </div>
