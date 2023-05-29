@@ -21,6 +21,10 @@ function MetricAssessment(props: MetricAssessmentProps) {
   let filteredTracks = useCache(definedTrackIDs || [], getTrack) || [];
   let filteredAudioFeatures = useCache(definedTrackIDs || [], getAudioFeatures) || [];
 
+  // ------------------------------------
+  // Metric Calculations (New Playlist)
+  // ------------------------------------
+
   let playlistMetrics = {
     danceability: {
       total: 0,
@@ -41,7 +45,6 @@ function MetricAssessment(props: MetricAssessmentProps) {
 
   let playlistArtists = new Set();
 
-  // Computes the various metrics of your new playlist.
   for (let track of filteredTracks) {
     if (track === undefined) {
       continue
@@ -70,25 +73,15 @@ function MetricAssessment(props: MetricAssessmentProps) {
   playlistMetrics.energy.average = (playlistMetrics.energy.total / filteredAudioFeatures.length) || 0;
   playlistMetrics.valence.average = (playlistMetrics.valence.total / filteredAudioFeatures.length) || 0;
 
-  let datasets: {[audioFeature: string]: number[]} = {
-    danceability: [],
-    energy: [],
-    valence: [],
-    instrumentalness: [],
-    loudness: [],
-    key_signature: [],
-    tempo: [],
-    time_signature: [],
-    duration_ms: []
-  }
-
+  // ------------------------------------
+  // Chart Creation (Source Playlist(s))
+  // ------------------------------------
   let energyDataset = [];
   let valenceDataset = [];
   let danceabilityDataset = [];
 
   // Computes the total danceability, energy, and valence of the playlist for averaging later.
   if (props.sourceAudioFeatures !== undefined && definedTrackIDs !== undefined) {
-    let numberOfTracksWithAudioFeatures: number = 0;
     for (let audioFeatures of props.sourceAudioFeatures) {
       if (audioFeatures === undefined) {
         continue
@@ -102,11 +95,6 @@ function MetricAssessment(props: MetricAssessmentProps) {
 
       // Valence Computations
       valenceDataset.push(audioFeatures.valence);
-
-      // Instrumentalness Computations
-
-      // Misc Computations
-      numberOfTracksWithAudioFeatures++;
     }
   }
   

@@ -20,7 +20,6 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
   let [showPlaylistForm, setShowPlaylistForm] = useState(false);
   const filteredTracks = removeUndefined(useCache(props.filteredTrackIDs, getTrack));
   let newPlaylistTracks = removeUndefined(useCache(props.newPlaylistTrackIDs, getTrack));
-  let newPlaylistAudioFeatures = useCache(props.newPlaylistTrackIDs, getAudioFeatures);
 
   let sourceTrackTiles: JSX.Element[] = [];
   let newTrackTiles = [];
@@ -71,7 +70,7 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
   // }
 
   let submissionFormOverlay = showPlaylistForm ?       
-    <CreatePlaylist trackIDs={newPlaylistTracks.map((track) => track.id)} setShowPlaylistForm={setShowPlaylistForm} resetSelections={props.resetSelections} /> 
+    <CreatePlaylist trackIDs={filteredTracks.map((track) => track.id)} setShowPlaylistForm={setShowPlaylistForm} resetSelections={props.resetSelections} /> 
     : null;
 
   return (

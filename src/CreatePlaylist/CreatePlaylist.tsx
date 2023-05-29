@@ -12,28 +12,6 @@ interface CreatePlaylistProps {
     resetSelections: () => void
 }
 
-
-let defaultFilterSettings: FilterSettings = {
-    energy: {
-      min: 0,
-      max: 100,
-      setMin: (filterSettings, newMin) => {filterSettings.energy.min = newMin; return filterSettings},
-      setMax: (filterSettings, newMax) => {filterSettings.energy.max = newMax; return filterSettings}
-    },
-    valence: {
-      min: 0,
-      max: 100,
-      setMin: (filterSettings, newMin) => {filterSettings.valence.min = newMin; return filterSettings},
-      setMax: (filterSettings, newMax) => {filterSettings.valence.max = newMax; return filterSettings}
-    },
-    danceability: {
-      min: 0,
-      max: 100,
-      setMin: (filterSettings, newMin) => {filterSettings.danceability.min = newMin; return filterSettings},
-      setMax: (filterSettings, newMax) => {filterSettings.danceability.max = newMax; return filterSettings}
-    }
-};
-
 function CreatePlaylist(props: CreatePlaylistProps) {   
     //TODO: We want Dancify to rerender the playlist pane afterwards.
     //TODO: Figure out why "form submission canceled because the form is not connected" happens but form completes successfully.
@@ -42,16 +20,11 @@ function CreatePlaylist(props: CreatePlaylistProps) {
     const [playlistName, setPlaylistName] = useState('');
     const [playlistDescription, setPlaylistDescription] = useState('');
     const [isPlaylistPrivate, setIsPlaylistPrivate] = useState(false);
-    let [filterSettings, setFilterSettings] = useState(defaultFilterSettings);
-    let newPlaylistAudioFeatures = useCache(props.trackIDs, getAudioFeatures);
 
     let createPlaylistUI = (
     <div className="CreatePlaylist" >
         <div className="overlay-background" />
         <div className="submission-window">
-            <div className="new-playlist-metrics">
-                <MetricAssessment trackIDs={props.trackIDs} audioFeatures={newPlaylistAudioFeatures} filterSettings={filterSettings} setFilterSettings={setFilterSettings}/>
-            </div>
             <div className="submission-form-wrapper">
                 <div className="add-playlist-form">
                     <form>
