@@ -1,7 +1,7 @@
 import Meter from "../Meter/Meter";
 import { FilterSettings } from "../PlaylistDetailsPane/PlaylistDetailsPane";
 import RangeSlider from "../RangeSlider/RangeSlider";
-import { getTrack } from "../fixtures/data";
+import { getAudioFeatures, getTrack } from "../fixtures/data";
 import { AudioFeatures, TrackID } from "../types";
 import { makeBarChart } from '../utilities/makeBarChart';
 import { makeFrequencyDistribution } from '../utilities/makeFrequencyDistribution';
@@ -19,6 +19,7 @@ interface MetricAssessmentProps {
 function MetricAssessment(props: MetricAssessmentProps) {
   let definedTrackIDs = removeUndefined(props.trackIDs);
   let trackList = useCache(definedTrackIDs || [], getTrack) || [];
+  let trackListAudioFeatures = useCache(definedTrackIDs || [], getAudioFeatures) || [];
 
   let playlistMetrics = {
     danceability: {

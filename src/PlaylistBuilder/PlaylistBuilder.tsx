@@ -7,7 +7,6 @@ import { removeUndefined } from "../utilities/removeUndefined";
 import { useCache } from "../utilities/useCache";
 import "./PlaylistBuilder.css";
 import { Virtuoso } from "react-virtuoso";
-import { buildComboTracks } from "../utilities/buildComboTrack";
 
 interface PlaylistBuilderProps {
   filteredTrackIDs: TrackID[],
@@ -38,7 +37,7 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
   let virtualizedList = <Virtuoso 
     // totalCount={filteredTracks.length}
     data={filteredTracks}
-    itemContent={(i, track) => <TrackItem trackInfo={track} index={i} buttonType={"add"} addRemoveTrack={props.addTrack} key={track.id} />}
+    itemContent={(i, track) => <TrackItem trackInfo={track} index={i} buttonType={"remove"} addRemoveTrack={props.removeTrack} key={track.id} />}
   />
 
   for (let i = 0; i < filteredTracks.length; i++) {
@@ -58,17 +57,18 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
     sourceTrackTiles.push(trackUI);
   }
 
-  for (let i = 0; i < newPlaylistTracks.length; i++) {
-    let trackUI = <TrackItem  
-    trackInfo={newPlaylistTracks[i]} 
-    index={i}
-    buttonType={"remove"}
-    addRemoveTrack={props.removeTrack}
-    key={newPlaylistTracks[i].id}
-    />;
+  // NOTE: Old manual playlist builder logic for adding tracks one by one.
+  // for (let i = 0; i < newPlaylistTracks.length; i++) {
+  //   let trackUI = <TrackItem  
+  //   trackInfo={newPlaylistTracks[i]} 
+  //   index={i}
+  //   buttonType={"remove"}
+  //   addRemoveTrack={props.removeTrack}
+  //   key={newPlaylistTracks[i].id}
+  //   />;
 
-    newTrackTiles.push(trackUI);
-  }
+  //   newTrackTiles.push(trackUI);
+  // }
 
   let submissionFormOverlay = showPlaylistForm ?       
     <CreatePlaylist trackIDs={newPlaylistTracks.map((track) => track.id)} setShowPlaylistForm={setShowPlaylistForm} resetSelections={props.resetSelections} /> 
@@ -81,14 +81,13 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
         <div className="source-playlist-info" >
           <div className="source-playlist playlist-tiles-wrapper">
             {virtualizedList}
-            {/* {sourceTrackTiles} */}
           </div>
         </div>
-        <div className="new-playlist-info">
+        {/* <div className="new-playlist-info">
           <div className="new-playlist playlist-tiles-wrapper">
             {newTrackTiles}
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="buttons-wrapper">
         <button className="add-playlist-button" onClick={() => {
