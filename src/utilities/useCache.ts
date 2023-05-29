@@ -14,8 +14,6 @@ export function useCache<Type>(ids: string[], getType: (id: string) => Promise<T
     // }
 
     useEffect(() => {
-        console.log(ids);
-        // console.log(stack);
         let mounted = true;
         let cachePromises: Promise<Type>[] = [];
         

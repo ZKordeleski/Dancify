@@ -37,7 +37,7 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
   let virtualizedList = <Virtuoso 
     // totalCount={filteredTracks.length}
     data={filteredTracks}
-    itemContent={(i, track) => <TrackItem trackInfo={track} index={i} buttonType={"remove"} addRemoveTrack={props.removeTrack} key={track.id} />}
+    itemContent={(i, track) => <TrackItem trackInfo={track} index={i} buttonType={"add"} addRemoveTrack={props.addTrack} key={track.id} />}
   />
 
   for (let i = 0; i < filteredTracks.length; i++) {
