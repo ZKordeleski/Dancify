@@ -14,7 +14,7 @@ interface TrackInfoProps{
 
 function TrackItem(props: TrackInfoProps) {
   // TODO: Finish artist names;
-  let trackAudioFeatures = useCache([props.trackInfo.id], getAudioFeatures)?.[0];
+  // let trackAudioFeatures = useCache([props.trackInfo.id], getAudioFeatures)?.[0];
   let artists: (Artist | undefined)[] | undefined = useCache(props.trackInfo.artistIDs, getArtist);
   let artistNames: string[] = [];
   for (let artist of artists || []) {

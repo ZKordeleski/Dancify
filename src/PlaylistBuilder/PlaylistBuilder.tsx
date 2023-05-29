@@ -7,6 +7,7 @@ import { removeUndefined } from "../utilities/removeUndefined";
 import { useCache } from "../utilities/useCache";
 import "./PlaylistBuilder.css";
 import { Virtuoso } from "react-virtuoso";
+import { buildComboTracks } from "../utilities/buildComboTrack";
 
 interface PlaylistBuilderProps {
   filteredTrackIDs: TrackID[],
