@@ -36,7 +36,7 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
   let virtualizedList = <Virtuoso 
     // totalCount={filteredTracks.length}
     data={filteredTracks}
-    itemContent={(i, track) => <TrackItem trackInfo={track} index={i} buttonType={"add"} addRemoveTrack={props.addTrack} key={track.id} />}
+    itemContent={(i, track) => <TrackItem trackInfo={track} index={i} buttonType={"remove"} addRemoveTrack={props.removeTrack} key={track.id} />}
   />
 
   for (let i = 0; i < filteredTracks.length; i++) {
@@ -48,8 +48,8 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
     let trackUI = <TrackItem  
     trackInfo={filteredTracks[i]} 
     index={i}
-    buttonType={"add"}
-    addRemoveTrack={props.addTrack}
+    buttonType={"remove"}
+    addRemoveTrack={props.removeTrack}
     key={filteredTracks[i].id}
     />;
 
@@ -82,6 +82,7 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
             {virtualizedList}
           </div>
         </div>
+        {/* TODO: The below could be adapted into a "cutting room floor" using the current functionality. */}
         {/* <div className="new-playlist-info">
           <div className="new-playlist playlist-tiles-wrapper">
             {newTrackTiles}

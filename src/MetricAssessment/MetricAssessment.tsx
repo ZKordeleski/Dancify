@@ -100,15 +100,15 @@ function MetricAssessment(props: MetricAssessmentProps) {
   
   // Danceability Chart and Filter
   let danceabilityFrequencyDistribution = makeFrequencyDistribution(danceabilityDataset);
-  let danceabilityChart = makeBarChart("Danceability Distribution", danceabilityFrequencyDistribution, '#FCA18E', Math.max(...danceabilityFrequencyDistribution));
+  let danceabilityChart = makeBarChart("Danceability Distribution", danceabilityFrequencyDistribution, '#FCA18E', Math.max(...danceabilityFrequencyDistribution), "Danceability");
 
   // Energy Chart and Filter
   let energyFrequencyDistribution = makeFrequencyDistribution(energyDataset);
-  let energyChart = makeBarChart("Energy Distribution", energyFrequencyDistribution, '#8EFCA1', Math.max(...energyFrequencyDistribution));
+  let energyChart = makeBarChart("Energy Distribution", energyFrequencyDistribution, '#8EFCA1', Math.max(...energyFrequencyDistribution), "Energy");
 
   // Valence Chart and Filter
   let valenceFrequencyDistribution = makeFrequencyDistribution(valenceDataset);
-  let valenceChart = makeBarChart("Valence Distribution", valenceFrequencyDistribution, '#A18EFC', Math.max(...valenceFrequencyDistribution));
+  let valenceChart = makeBarChart("Valence Distribution", valenceFrequencyDistribution, '#A18EFC', Math.max(...valenceFrequencyDistribution), "Happiness");
 
   function boundSetter(min: number, max: number, key: string): void {
     props.setFilterSettings({...props.filterSettings, [key]: [min, max]});

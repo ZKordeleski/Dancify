@@ -43,6 +43,7 @@ function PlaylistPane(props: PlaylistPaneProps) {
 
   return (
     <div className={`PlaylistPane ${status}`}>
+      <h3>Your Music Library</h3>
       {[...selectedPlaylistTiles, ...playlistTiles]}
     </div>
   )

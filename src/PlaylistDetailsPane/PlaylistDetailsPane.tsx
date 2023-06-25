@@ -86,7 +86,10 @@ function PlaylistDetailsPane(props: PlaylistDetailsPaneProps) {
 
   return (
     <div className="PlaylistDetailsPane Tile">
-      <MoodSelector setFilterPreset={updateFilterSettings} />
+      <div className="mood-selector-wrapper">
+        <h3>Select a Mood</h3>
+        <MoodSelector setFilterPreset={updateFilterSettings} />
+      </div>
       <MetricAssessment trackIDs={filteredTrackIDs} sourceAudioFeatures={sourceAudioFeatures} filterSettings={filterSettings} setFilterSettings={setFilterSettings}/>
       {/* <button onClick={() => setDisplayDetails(!displayDetails)}>Show Details</button> */}
       <PlaylistBuilder filteredTrackIDs={filteredTrackIDs} newPlaylistTrackIDs={props.newPlaylistTrackIDs} addTrack={props.addTrack} removeTrack={props.removeTrack} resetSelections={props.resetSelections}/>

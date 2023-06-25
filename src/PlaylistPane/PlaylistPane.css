@@ -17,6 +17,10 @@
     justify-content: flex-start;
 }
 
+.PlaylistPane:first-child {
+    text-align: center;
+}
+
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
     width: 15px;

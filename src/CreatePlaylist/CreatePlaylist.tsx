@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { getAudioFeatures, postNewPlaylist } from "../fixtures/data";
+import { postNewPlaylist } from "../fixtures/data";
 import { TrackID } from "../types";
-import './CreatePlaylist.css'
-import MetricAssessment from "../MetricAssessment/MetricAssessment";
-import { useCache } from "../utilities/useCache";
-import { FilterSettings } from "../PlaylistDetailsPane/PlaylistDetailsPane";
+import './CreatePlaylist.css';
 
 interface CreatePlaylistProps {
     trackIDs: TrackID[],
@@ -13,18 +10,18 @@ interface CreatePlaylistProps {
 }
 
 function CreatePlaylist(props: CreatePlaylistProps) {   
-    //TODO: We want Dancify to rerender the playlist pane afterwards.
-    //TODO: Figure out why "form submission canceled because the form is not connected" happens but form completes successfully.
-    //TODO: The cancel button currently disables the PlaylistPane for some reason...
 
     const [playlistName, setPlaylistName] = useState('');
     const [playlistDescription, setPlaylistDescription] = useState('');
     const [isPlaylistPrivate, setIsPlaylistPrivate] = useState(false);
 
+    // NOTE: This could be a nice reuseable component down the road.
+    // Simply have an overlay component that accepts children to display and has a display state.
     let createPlaylistUI = (
     <div className="CreatePlaylist" >
         <div className="overlay-background" />
         <div className="submission-window">
+            <h4>Almost there! We just need to name it.</h4>
             <div className="submission-form-wrapper">
                 <div className="add-playlist-form">
                     <form>
@@ -34,6 +31,7 @@ function CreatePlaylist(props: CreatePlaylistProps) {
                                 type="text"
                                 required
                                 value={playlistName}
+                                // TODO: Consider tagging playlists with a "Dancify" tag?
                                 onChange={(event) => setPlaylistName(event.target.value)}
                             />
                         </div>
@@ -64,10 +62,7 @@ function CreatePlaylist(props: CreatePlaylistProps) {
                             create
                         </button>
                         <button type="button" onClick={() => props.setShowPlaylistForm(false)}>cancel</button>
-                </div>
-            </div>
-            <div className="submission-form-tracks-preview">
-                {}
+                    </div>
                 </div>
             </div>
         </div>
