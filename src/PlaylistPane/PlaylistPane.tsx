@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { playlistByID } from "../fixtures/data";
-import PlaylistItem from "../PlaylistItem/PlaylistItem";
-import { Playlist, PlaylistID, PlaylistMap } from "../types";
-import "./PlaylistPane.css";
 import LoadingPlaylistItem from "../PlaylistItem/LoadingPlaylistItem";
-import { List } from 'react-virtualized';
+import PlaylistItem from "../PlaylistItem/PlaylistItem";
+import { playlistByID } from "../fixtures/data";
+import { Playlist, PlaylistID } from "../types";
+import "./PlaylistPane.css";
 
 interface PlaylistPaneProps {
   playlistIDs: (PlaylistID | undefined)[] | undefined,
@@ -44,7 +42,12 @@ function PlaylistPane(props: PlaylistPaneProps) {
   return (
     <div className={`PlaylistPane ${status}`}>
       <h3>Your Music Library</h3>
-      {[...selectedPlaylistTiles, ...playlistTiles]}
+      <div className="selected-playlists playlists-wrapper">
+        {[...selectedPlaylistTiles]}
+      </div>
+      <div className="unselected-playlists playlists-wrapper">
+        {[...playlistTiles]}
+      </div>
     </div>
   )
 }

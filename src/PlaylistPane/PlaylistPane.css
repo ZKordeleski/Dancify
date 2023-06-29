@@ -17,6 +17,18 @@
     justify-content: flex-start;
 }
 
+.PlaylistPane .playlists-wrapper {
+    display: contents;
+}
+
+.PlaylistPane .playlists-wrapper > * {
+    transition: margin-bottom .3s ease-in-out;
+}
+
+.PlaylistPane .selected-playlists > *:last-child {
+    margin-bottom: 30px;
+}
+
 .PlaylistPane:first-child {
     text-align: center;
 }

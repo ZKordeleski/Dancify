@@ -1,21 +1,27 @@
 .CreatePlaylist {
     display: flex;
     flex-direction: column;
+}
 
-    max-width: 400px;
+.CreatePlaylist h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 2em;
+    
+    margin-top: 0px;
 }
 
 .CreatePlaylist .submission-window {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    
-    position: fixed;
-    top: 33%;
-    left: 33%;
-    width: 33%;
-    height: 33%;
+
+    align-self: center;
+
     padding: 20px;
+    border-radius: 10px;
+
+    box-shadow: 0 10px 20px rgba(28, 28, 28, 0.5);
+
     background-color: var(--app-background-color);
     z-index: 10;
 }
@@ -29,8 +35,7 @@
 .CreatePlaylist .add-playlist-form form {
     display: flex;
     flex-direction: column;
-    margin: var(--tile-margin);
-    gap: var(--tile-margin);
+    gap: calc(2 * var(--tile-margin));
 }
 
 .CreatePlaylist .add-playlist-form form > * {
@@ -40,14 +45,27 @@
     flex-shrink: 0;
 }
 
-.CreatePlaylist input {
+.CreatePlaylist label {
+    flex-shrink: 0;
+    width: 100px;
+}
+
+.CreatePlaylist input, .CreatePlaylist textarea {
     display: flex;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-    margin: var(--tile-margin);
     padding: 3px;
     border: none;
     border-radius: 3px;
+}
+
+.CreatePlaylist input:not([type=checkbox]), .CreatePlaylist textarea {
+    flex-grow: 1;
+    width: 225px;
+}
+
+.CreatePlaylist textarea {
+    height: 3.5em;
 }
 
 .CreatePlaylist .submission-form-wrapper {
@@ -67,20 +85,21 @@
 .CreatePlaylist .overlay-background {
     display: flex;
     background-color: rgba(0,0,0,.8);
-    width: 100%;
-    height: 100%; 
+    justify-content: center;
     top: 0; 
+    bottom: 0;
     left: 0; 
+    right: 0;
     z-index: 10;
-    position: fixed;
+    position: absolute;
 }
 
 .CreatePlaylist .submission-form-wrapper .buttons-wrapper {
     display: flex;
     justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
 
-    gap: 15px;
-    position: sticky;
     bottom: 5px;
 }
 
@@ -96,8 +115,6 @@
     width: 120px;
     height: 40px;
 
-    margin: 10px;
-
     border: solid #6D6D6D 1px;
     border-radius: 5px;
 }
@@ -105,7 +122,7 @@
 
 .CreatePlaylist .buttons-wrapper .reset-button {
     background-color: rgb(216, 97, 97);
-    box-shadow: 0 0 20px rgb(216, 97, 97, 0.2);
+    box-shadow: 0 0 20px rgba(216, 97, 97, 0.108);
 }
 
 .CreatePlaylist .buttons-wrapper button:hover {

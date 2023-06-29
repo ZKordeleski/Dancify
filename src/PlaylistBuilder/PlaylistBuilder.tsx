@@ -79,6 +79,7 @@ export function PlaylistBuilder(props: PlaylistBuilderProps) {
       <div className="playlists-window">
         <div className="source-playlist-info" >
           <div className="source-playlist playlist-tiles-wrapper">
+            <h4>New Playlist:</h4>
             {virtualizedList}
           </div>
         </div>
