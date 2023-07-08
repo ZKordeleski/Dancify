@@ -1,0 +1,166 @@
+/* Reset some default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #16131d;
+    color: #fff;
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    text-align: left;
+    font-size: 48px;
+    line-height: 1.2;
+    font-family: monospace;
+}
+
+.title span:first-child, .title span:last-child {
+    font-size: 64px;
+    font-family: sans-serif;
+    
+}
+
+.music {
+    color: #FCA18E;
+}
+
+.mood {
+    color: #8EFCA1;
+}
+
+.app-screenshot {
+    width: 400px; /* Adjust the width as needed */
+    height: auto;
+    margin-left: 20px; /* Adjust the margin as needed */
+    padding: 20px;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.description p {
+font-size: 20px;
+}
+
+.get-started-btn {
+    width: 180px;
+    height: 60px;
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: #A18EFC;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+.title {
+    font-size: 28px;
+}
+
+.music {
+    font-size: 36px;
+}
+
+.mood {
+    font-size: 36px;
+}
+
+.app-screenshot {
+    width: 200px; /* Adjust the width as needed */
+    margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.description p {
+    font-size: 16px;
+}
+
+.get-started-btn {
+    font-size: 14px;
+    width: 100px;
+    height: 30px;
+}
+}
+
+.Landing .get-started-btn:hover {
+    box-shadow: 0 0 20px #7f70c9;
+    transform: scale(1.01);
+
+    transition: scale 100ms ease-in-out;
+}
+
+.Landing .get-started-btn:hover:active {
+    background-color: #7b6cc5;
+}
+
+.overlay {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(22, 19, 29, 0.8);
+    z-index: 9999;
+}
+  
+  .overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(22, 19, 29, 0.9);
+    height: 25%;
+    width: 25%;
+  }
+  
+  .overlay-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .overlay-btn {
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #A18EFC;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+/* Animation */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+}
+}

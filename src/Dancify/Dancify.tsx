@@ -8,6 +8,7 @@ import { Playlist, TrackID } from "../types"
 import { useCache } from "../utilities/useCache"
 import "./Dancify.css"
 import { Virtuoso } from "react-virtuoso"
+import Landing from "../Landing/landing"
 
 if (location.href.includes("?code=")) {
   exchangeCodeForToken();
@@ -55,7 +56,7 @@ function Dancify() {
   }
   
   if (token === undefined) {
-    return <Login />
+    return <Landing />
   } else {
     return (
       <div className="Dancify">
