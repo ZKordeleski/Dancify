@@ -1,0 +1,174 @@
+/* Reset some default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0e0d15;
+    height: 5vh;
+    padding: 20px;
+}
+  
+.app-name {
+    color: #fff;
+    font-family: monospace;
+    font-size: 36px;
+}
+  
+.blurb {
+    color: #a0a0a0;
+    font-size: 14px;
+}
+
+.Landing {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: #16131d;
+    color: #fff;
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slide-in 1s ease forwards;
+}
+
+.title {
+    text-align: left;
+    font-size: 48px;
+    line-height: 1.2;
+    font-family: monospace;
+}
+
+.title div:first-child, .title div:last-child {
+    font-size: 64px;
+    font-family: sans-serif;
+    
+}
+
+.music {
+    color: #FCA18E;
+}
+
+.mood {
+    color: #8EFCA1;
+}
+
+.app-screenshot {
+    width: 400px; /* Adjust the width as needed */
+    height: auto;
+    margin-left: 20px; /* Adjust the margin as needed */
+    padding: 20px;
+    opacity: 0;
+    animation: slide-in 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    opacity: 0;
+    animation: slide-in 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.description p {
+font-size: 20px;
+}
+
+.get-started-btn {
+    padding: .75em 1em;
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: #A18EFC;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: fade-in 1s ease forwards, slide-in 1s ease forwards;
+    animation-delay: 1s;
+}
+
+@media only screen and (max-width: 600px) {
+.title {
+    font-size: 28px;
+}
+
+.music {
+    font-size: 36px;
+}
+
+.mood {
+    font-size: 36px;
+}
+
+.app-screenshot {
+    width: 200px; /* Adjust the width as needed */
+    margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.description p {
+    font-size: 16px;
+}
+
+.get-started-btn {
+    font-size: 14px;
+    width: 100px;
+    height: 30px;
+}
+}
+
+.Landing .get-started-btn:hover {
+    box-shadow: 0 0 20px #7f70c9;
+    transform: scale(1.01);
+
+    transition: scale 100ms ease-in-out;
+}
+
+.Landing .get-started-btn:hover:active {
+    background-color: #7b6cc5;
+}
+  
+/* Animations */
+/* TODO: Consider adding different direction slide ins for each element. */
+@keyframes slide-in {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

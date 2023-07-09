@@ -8,6 +8,7 @@ import { Playlist, TrackID } from "../types"
 import { useCache } from "../utilities/useCache"
 import "./Dancify.css"
 import { Virtuoso } from "react-virtuoso"
+import Landing from "../Landing/landing"
 
 if (location.href.includes("?code=")) {
   exchangeCodeForToken();
@@ -55,14 +56,12 @@ function Dancify() {
   }
   
   if (token === undefined) {
-    return <Login />
+    return <Landing />
   } else {
     return (
       <div className="Dancify">
         <PlaylistPane playlistIDs={playlistIDs} setNewSelection={setNewSelection} selectedPlaylists={selectedPlaylists} />
         <PlaylistDetailsPane trackIDs={selectedPlaylistsTrackIDs} newPlaylistTrackIDs={newPlaylist} addTrack={addTrack} removeTrack={removeTrack} resetSelections={resetSelections} key={selectedPlaylists?.map((playlist) => playlist.id).toString()} />
-        {/* <FunctionSelection selectedPlaylistTrackIDs={selectedPlaylistTrackIDs} setDancifiedTracks={setDancifiedTracks} /> */}
-        {/* <PlaylistDetailsPane trackIDs={dancifiedTracks} key={selectedPlaylist?.id + "dancified"}/> */}
       </div>
     )
   }

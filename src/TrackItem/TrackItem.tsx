@@ -14,7 +14,7 @@ interface TrackInfoProps{
 
 function TrackItem(props: TrackInfoProps) {
   // TODO: Finish artist names;
-  let trackAudioFeatures = useCache([props.trackInfo.id], getAudioFeatures)?.[0];
+  // let trackAudioFeatures = useCache([props.trackInfo.id], getAudioFeatures)?.[0];
   let artists: (Artist | undefined)[] | undefined = useCache(props.trackInfo.artistIDs, getArtist);
   let artistNames: string[] = [];
   for (let artist of artists || []) {
@@ -23,7 +23,7 @@ function TrackItem(props: TrackInfoProps) {
     }
   }
   return (
-    <div className={"TrackItem " + props.buttonType + "TrackItem"}>
+    <div className={"TrackItem " + props.buttonType + "TrackItem"} onClick={() => props.addRemoveTrack(props.trackInfo.id, props.index)}>
       <div className="track-info-wrapper">
         <div className="track-image" style={{backgroundImage: `url("${props.trackInfo.images[0].url}")`}} />
         <div className="TextContainer">

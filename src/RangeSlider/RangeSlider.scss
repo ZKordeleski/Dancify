@@ -13,7 +13,12 @@
     margin: 0px calc(var(--thumb-size));
     margin-top: calc(-1 * (var(--thumb-size))/2);
     height: var(--thumb-size);
-    
+
+    &:not(:focus-within) {
+        .control, .inner-rail {
+            transition: left 1s ease-in-out, right 1s ease-in-out;
+        }
+    }
 }
 
 .RangeSlider .sliders-wrapper {
@@ -55,11 +60,10 @@
     border-radius: 0px;
     border: 0 none;
     cursor: grab;
-    background-color: red;
-}
 
-.RangeSlider input::-webkit-slider-thumb:active {
-    cursor: grabbing;
+    &:active {
+        cursor: grabbing;
+    }
 }
 
 .RangeSlider .rail {
@@ -76,7 +80,6 @@
 .RangeSlider .inner-rail {
     position: absolute;
     height: 100%;
-    background: hotpink;
     opacity: 0.5;
 }
 
@@ -86,7 +89,6 @@
     border-radius: 50%;
     border: var(--slider-border) solid var(--app-background-color);
     position: absolute;
-    background: hotpink;
     top: 50%;
     margin-left: calc(var(--thumb-size) / -2);
     transform: translate3d(0, -50%, 0);

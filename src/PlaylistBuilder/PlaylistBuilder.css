@@ -10,6 +10,8 @@
 }
 
 .PlaylistBuilder .new-playlist-info, .PlaylistBuilder .source-playlist-info, .PlaylistBuilder .submission-form-tracks-preview {
+    display: flex;
+    flex: 1 1 512px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -25,14 +27,11 @@
 
 .PlaylistBuilder .playlist-tiles-wrapper {
     display: flex;
-}
-
-.PlaylistBuilder .source-playlist-info .source-playlist {
     flex-direction: column;
+    flex: 1;
 }
 
 .PlaylistBuilder .new-playlist-info .new-playlist {
-    flex-direction: column;
     align-items: flex-end;
 }
 

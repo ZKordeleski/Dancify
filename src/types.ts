@@ -29,6 +29,8 @@ export interface Track {
     images: Raw.Image[],
     artistIDs: ArtistID[],
     durationMS: number,
+    releaseDate: string,
+    explicit: boolean,
     added: boolean | undefined
 }
 
@@ -43,6 +45,12 @@ export interface AudioFeatures {
     tempo: number,
     time_signature: number,
     duration_ms: number
+}
+
+export interface TrackMetrics extends AudioFeatures {
+    name: string,
+    releaseDate: string,
+    artists: string[]
 }
 
 // =====================
@@ -127,32 +135,34 @@ export namespace Raw {
     }
 
     export interface Album {
-        album_type: string;
-        total_tracks: number;
+        album_type: string,
+        total_tracks: number,
         external_urls: {
             spotify: string;
         };
-        id: string;
-        images: Raw.Image[];
-        name: string;
-        release_date: string;
-        type: string;
+        id: string,
+        images: Raw.Image[],
+        name: string,
+        release_date: string,
+        type: string,
         artists: {
-            id: string;
+            id: string,
             name: string;
         }[];
     }
 
     export interface Track {
-        album: Album;
-        artists: Omit<Artist, "popularity" | "genres" | "images">[];
-        duration_ms: number;
+        album: Album,
+        artists: Omit<Artist, "popularity" | "genres" | "images">[],
+        duration_ms: number,
         external_urls: {
             spotify: string;
         };
-        id: string;
-        name: string;
-        popularity: number;
+        id: string,
+        name: string,
+        popularity: number,
+        release_date: string,
+        explicit: boolean;
     }
     
     export interface Image {

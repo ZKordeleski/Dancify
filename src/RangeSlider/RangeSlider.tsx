@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import './RangeSlider.css'
+import './RangeSlider.scss'
 
 interface RangeSliderProps {
   min: number,
   max: number,
   step: number,
+  filterRange: number[],
   setBounds: (min: number, max: number, key: string) => void,
   name: string,
   color: string
@@ -12,16 +13,13 @@ interface RangeSliderProps {
 
 //TODO: Could RangeSlider be responsible for managing the state here or does the parent have to handle it for rerender?
 export function RangeSlider(props: RangeSliderProps) {
-  const [minValue, setSliderMin] = useState(props.min);
-  const [maxValue, setSliderMax] = useState(props.max);
   const handleMinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const value = parseFloat(event.target.value);
     // the new min value is the value from the event.
     // it should not exceed the current max value!
-    const newMin = Math.min(value, maxValue - props.step);
-    setSliderMin(newMin);
-    props.setBounds(newMin, maxValue, props.name);
+    const newMin = Math.min(value, props.filterRange[1] - props.step);
+    props.setBounds(newMin, props.filterRange[1], props.name);
   };
   
   const handleMaxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,13 +27,12 @@ export function RangeSlider(props: RangeSliderProps) {
     const value = parseFloat(event.target.value);
     // the new max value is the value from the event.
     // it must not be less than the current min value!
-    const newMax = Math.max(value, minValue + props.step);
-    setSliderMax(newMax);
-    props.setBounds(minValue, newMax, props.name);
+    const newMax = Math.max(value, props.filterRange[0] + props.step);
+    props.setBounds(props.filterRange[0], newMax, props.name);
   };
 
-  const minPos = ((minValue - props.min) / (props.max - props.min)) * 100;
-  const maxPos = ((maxValue - props.min) / (props.max - props.min)) * 100;
+  const minPos = ((props.filterRange[0] - props.min) / (props.max - props.min)) * 100;
+  const maxPos = ((props.filterRange[1] - props.min) / (props.max - props.min)) * 100;
 
   return (
     <div className="RangeSlider">
@@ -44,7 +41,7 @@ export function RangeSlider(props: RangeSliderProps) {
           name={props.name + ' minimum value'}
           className="min-slider"
           type="range"
-          value={minValue}
+          value={props.filterRange[0]}
           min={props.min}
           max={props.max}
           step={props.step}
@@ -54,7 +51,7 @@ export function RangeSlider(props: RangeSliderProps) {
           name={props.name + ' maximum value'}
           className="max-slider"
           type="range"
-          value={maxValue}
+          value={props.filterRange[1]}
           min={props.min}
           max={props.max}
           step={props.step}

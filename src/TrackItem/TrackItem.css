@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
 
-    width: 20vw;
+    width: 30vw;
 /* 
     border: solid 2px rgba(0, 0, 0, 0.321);
     border-radius: 10px; */
@@ -16,12 +16,12 @@
         opacity .2s ease-in-out;
 }
 
+/* Mirrored styling for cut tracks.
 .TrackItem.removeTrackItem {
     flex-direction: row-reverse;
 }
 
 .TrackItem.removeTrackItem:hover {
-    flex-direction: row-reverse;
     transform: translateX(-10px);
 }
 
@@ -37,6 +37,7 @@
     text-align: right;
     justify-content: flex-end;
 }
+*/
 
 .TrackItem .track-info-wrapper {
     display: flex;

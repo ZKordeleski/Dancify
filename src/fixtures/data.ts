@@ -377,6 +377,8 @@ export async function fetchCurrentUserPlaylists(userID: string) {
             images: item.track.album.images,
             artistIDs: item.track.artists.map((artist) => artist.id),
             durationMS: item.track.duration_ms,
+            releaseDate: item.track.release_date,
+            explicit: item.track.explicit,
             added: false
         }
 
@@ -532,9 +534,9 @@ export async function postNewPlaylist(playlistName: string, isPublic: boolean, d
 
     await postPlaylistItems(trackIDs, newPlaylistID);
 
-    // HACK: Make this not a shitty hack but, rather, a perfectly acceptable hack to use.
+    // HACK: Adapt this hack to make it cleaner and more scaleable.
     // -- -- Use cache in dancify is looking at the currentUser key when running the fetch for current user playlists.
-    // -- -- That fetch wasn't running again after adding a new playlist because the check in "memoizeFetch" relies on the objectByID[ID] === undefined, which... it isn't.
+    // -- -- That fetch wasn't running again after adding a new playlists because the check in "memoizeFetch" relies on the objectByID[ID] === undefined, which... it isn't.
     // -- -- Need a better work around than simply changing the user.
     // TODO: Make the new playlist fetched and added to the top of the list. (Alternatively, make the users playlists get refetched and Spotify will hand back in the correct order.)
     currentUser = Math.random().toString();
@@ -608,6 +610,8 @@ export async function fetchPlaylistTracks(playlistID: PlaylistID) {
             images: item.track.album.images,
             artistIDs: item.track.artists.map((artist) => artist.id),
             durationMS: item.track.duration_ms,
+            releaseDate: item.track.release_date,
+            explicit: item.track.explicit,
             added: false
         }
 
@@ -679,6 +683,8 @@ export async function fetchTracks(trackIDs: TrackID[]) {
             images: responseTrack.album.images,
             artistIDs: responseTrack.artists.map((artist) => artist.id),
             durationMS: responseTrack.duration_ms,
+            releaseDate: responseTrack.release_date,
+            explicit: responseTrack.explicit,
             added: false
         };
 

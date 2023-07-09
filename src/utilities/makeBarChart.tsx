@@ -10,7 +10,7 @@ for (let i = 0; i < numberOfPartitions; i++) {
   labels.push(i.toString());
 }
 
-export function makeBarChart(name: string, dataset: number[], color: string = 'rgba(255, 99, 132, 0.5)', max: number, labelArray: string[] = labels) {
+export function makeBarChart(name: string, dataset: number[], color: string = 'rgba(255, 99, 132, 0.5)', max: number, title: string, labelArray: string[] = labels) {
     Chart.Chart.register(
       Chart.CategoryScale,
       Chart.LinearScale,
@@ -30,7 +30,7 @@ export function makeBarChart(name: string, dataset: number[], color: string = 'r
           scales: {
             y: {
                 min: 0,
-                max: max+.2,
+                max: max+.005,
                 ticks: {
                   display: false
                 },
@@ -58,12 +58,19 @@ export function makeBarChart(name: string, dataset: number[], color: string = 'r
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
+            tooltip: {enabled: false}, // <--- Hides the hover tooltip on each chart.
             legend: {
-              position: 'top' as const,
+              position: "top" as const,
               display: false
             },
             title: {
-              display: false,
+              display: true,
+              text: title,
+              position: "top" as const,
+              font: {
+                weight: "bold",
+                size: 15
+              }
             },
           },
         };
