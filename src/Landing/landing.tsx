@@ -11,16 +11,17 @@ function Landing() {
         <div className="container">
                 <div className="main-content">
                     <h1 className="title">
-                        <span className="music">MUSIC</span><br/>
-                        for your<br/>
-                        <span className="mood">MOOD</span>
+                        <div className="music">MUSIC</div>
+                        <div>for your</div>
+                        <div className="mood">MOOD</div>
                     </h1>
                     <img src="./app-screenshot-metrics.png" alt="App Screenshot" className="app-screenshot"/>
                 </div>
                 <div className="description">
-                <p>Playlists tailored to your specifications from your personal Spotify library. <br/> Your music, organized for your unique mood.</p>
+                <p>Playlists tailored to your specifications from your personal Spotify library.</p> 
+                <p>Your music, organized for your unique mood.</p>
                 </div>
-                <button className="get-started-btn" onClick={() => redirectUserToSpotifyAuthorization()}>Get Started</button>
+                <button className="get-started-btn" onClick={() => redirectUserToSpotifyAuthorization()}>Login with Spotify</button>
             </div>
     )   
 
@@ -35,6 +36,15 @@ function Landing() {
 
     return (
         <div className="Landing">
+              <header className="header">
+                    <div className="header-left">
+                    <h1 className="app-name">DANCIFY</h1>
+                </div>
+                <div className="header-right">
+                    <p className="blurb">a ♬ tool by Zack Kordeleski</p>
+                </div>
+            </header>
+
             {landingPageUI}
         </div>
     );
